@@ -1,18 +1,18 @@
 package org.usfirst.frc.team2903.robot.subsystems;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.G
 
 
 import org.usfirst.frc.team2903.robot.OI;
 import org.usfirst.frc.team2903.robot.RobotMap;
-//dhjgf
+//
 public class Gyro2903 {
 	
-	AnalogGyro gyro;
+	Gyro gyro;
 	
 	public Gyro2903() {
 
-		gyro = new AnalogGyro(RobotMap.Gyro);
+		gyro = new Gyro(RobotMap.Gyro);
 		gyro.reset();
 			
 		double angle = gyro.getAngle();
