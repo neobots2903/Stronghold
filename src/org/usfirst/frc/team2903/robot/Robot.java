@@ -11,6 +11,7 @@ import org.usfirst.frc.team2903.robot.commands.Teleop;
 import org.usfirst.frc.team2903.robot.subsystems.Drive;
 import org.usfirst.frc.team2903.robot.subsystems.Elevator;
 import org.usfirst.frc.team2903.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
 	public static final Drive driveSubsystem = new Drive();
 	public static final Elevator elevatorSubsystem = new Elevator();
 	public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
+	public static final Gyro2903 gyroSubsytem = new Gyro2903();
 	public static OI oi;
 
     Command autonomousCommand;
