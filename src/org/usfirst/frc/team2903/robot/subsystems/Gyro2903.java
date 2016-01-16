@@ -7,9 +7,12 @@ import org.usfirst.frc.team2903.robot.OI;
 import org.usfirst.frc.team2903.robot.RobotMap;
 //dhjgf
 public class Gyro2903 {
-	public void Gyro() {
+	
+	AnalogGyro gyro;
+	
+	public Gyro2903() {
 
-		AnalogGyro gyro = new AnalogGyro(RobotMap.Gyro);
+		gyro = new AnalogGyro(RobotMap.Gyro);
 		gyro.reset();
 			
 		double angle = gyro.getAngle();
