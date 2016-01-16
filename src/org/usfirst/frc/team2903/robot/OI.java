@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public static Joystick controller = new Joystick(0);
-	public static Joystick Joy1 = new Joystick(2);
-	public static Joystick Joy2 = new Joystick(3);
+	public static Joystick controller = new Joystick(2);
+	public static Joystick Joy1 = new Joystick(0);
+	public static Joystick Joy2 = new Joystick(1);
 	
 	public static JoystickButton elevatorUpButton = new JoystickButton(controller, RobotMap.ELEVATOR_UP);
 	public static JoystickButton elevatorDownButton = new JoystickButton(controller, RobotMap.ELEVTOR_DOWN);
