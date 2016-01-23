@@ -7,13 +7,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drive extends Subsystem {
 
-	public Talon middleMotor1 = new Talon(RobotMap.HDriveM5);
 	public RobotDrive hDrive = new RobotDrive(RobotMap.HDriveM1,
 			RobotMap.HDriveM2, RobotMap.HDriveM3, RobotMap.HDriveM4);
 
-	public void drive(double xAxis, double yAxis, double mid) {
+	public void drive(double xAxis, double yAxis) {
 		hDrive.arcadeDrive(yAxis, xAxis);
-		middleMotor1.set(-mid);
 	}
 
 	@Override

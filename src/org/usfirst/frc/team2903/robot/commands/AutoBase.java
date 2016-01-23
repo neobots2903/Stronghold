@@ -11,12 +11,10 @@ public class AutoBase extends Command {
 	public Talon rightFrontMotor1 = new Talon(RobotMap.HDriveM3);
 	public Talon leftBackMotor1 = new Talon(RobotMap.HDriveM1);
 	public Talon rightBackMotor1 = new Talon(RobotMap.HDriveM4);
-	public Talon middleMotor1 = new Talon(RobotMap.HDriveM5);
 	public RobotDrive hDrive = new RobotDrive(1, 2, 3, 4);
 
-	public void drive(double xAxis, double yAxis, double mid) {
+	public void drive(double xAxis, double yAxis) {
 		hDrive.arcadeDrive(xAxis, yAxis);
-		middleMotor1.set(mid);
 	}
 
 	protected void initDefaultCommand() {
