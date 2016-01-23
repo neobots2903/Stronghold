@@ -29,7 +29,7 @@ public class RobotMap {
 	public static int brakeSol = 3;
 	
 	//Gyro
-	public static int Gyro = 8;
+	public static int Gyro = 0;
     
 	// Elevator
 	public static int ELEVATOR_UP = 2;
