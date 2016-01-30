@@ -9,10 +9,10 @@ public class RobotMap {
 
 	
 	// CAN - Talon SRX
-    public static int HDriveM1 = 2;
-    public static int HDriveM2 = 3;
-    public static int HDriveM3 = 4;
-    public static int HDriveM4 = 5;
+    public static int RightFrontMotor = 2;
+    public static int LeftFrontMotor = 3;
+    public static int LeftRearMotor = 4;
+    public static int RightRearMotor = 5;
  
     // PWM
         

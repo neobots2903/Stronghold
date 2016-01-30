@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutoBase extends Command {
-	public Talon leftFrontMotor1 = new Talon(RobotMap.HDriveM2);
-	public Talon rightFrontMotor1 = new Talon(RobotMap.HDriveM3);
-	public Talon leftBackMotor1 = new Talon(RobotMap.HDriveM1);
-	public Talon rightBackMotor1 = new Talon(RobotMap.HDriveM4);
+	public Talon leftFrontMotor1 = new Talon(RobotMap.LeftFrontMotor);
+	public Talon rightFrontMotor1 = new Talon(RobotMap.LeftRearMotor);
+	public Talon leftBackMotor1 = new Talon(RobotMap.RightFrontMotor);
+	public Talon rightBackMotor1 = new Talon(RobotMap.RightRearMotor);
 	public RobotDrive hDrive = new RobotDrive(1, 2, 3, 4);
 
 	public void drive(double xAxis, double yAxis) {

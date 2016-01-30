@@ -25,13 +25,13 @@ public class Auto extends Command {
 			long startTime = System.currentTimeMillis();
 			long stopTime = startTime;
 
-			Robot.driveSubsystem.drive(0,autoForwardSpeed);
+			Robot.driveSubsystem.arcadeDrive(0,autoForwardSpeed);
 			
 			while (stopTime <= (startTime + autoDuration)) {
 				stopTime = System.currentTimeMillis();
 			}
 
-			Robot.driveSubsystem.drive(0,0);
+			Robot.driveSubsystem.arcadeDrive(0,0);
 			
 		}
 
