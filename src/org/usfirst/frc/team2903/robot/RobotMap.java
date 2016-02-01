@@ -14,19 +14,18 @@ public class RobotMap {
     public static int LeftRearMotor = 4;
     public static int RightRearMotor = 5;
 
-	//Gyro
-	public static int Gyro = 0;
+    //Gyro
+    public static int Gyro = 0;
 
-	//Shooters
-	public static int ShooterMotor1 = 0;
-	public static int ShooterMotor2 = 1;
+    //Shooters
+    public static int ShooterMotor1 = 0;
+    public static int ShooterMotor2 = 1;
 	
-	//Lift
-	public static int LiftMotor = 2;
+    //Lift
+    public static int LiftMotor = 2;
 	
-	//Winch
-	public static int WinchMotor = 3;
+    //Winch
+    public static int WinchMotor = 3;
 	
 	public static int KickingMotor = 4;
-
 }
