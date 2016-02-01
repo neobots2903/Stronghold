@@ -8,10 +8,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2903.robot.commands.Teleop;
-import org.usfirst.frc.team2903.robot.subsystems.Drive;
-import org.usfirst.frc.team2903.robot.subsystems.Elevator;
-import org.usfirst.frc.team2903.robot.subsystems.Pneumatics;
-import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
+import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,10 +20,8 @@ import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Drive driveSubsystem = new Drive();
-	public static final Elevator elevatorSubsystem = new Elevator();
-	public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
-	public static final Gyro2903 gyroSubsytem = new Gyro2903();
+	public static Drive2903 driveSubsystem;
+//	public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -36,11 +32,12 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.      */
     public void robotInit() {
 		oi = new OI();
+		driveSubsystem = new org.usfirst.frc.team2903.robot.subsystems.Drive2903();
         //autonomousCommand = new Auto();
         teleopCommand = new Teleop();
-        CameraServer server = CameraServer.getInstance();
-    	server.setQuality(50);
-    	server.startAutomaticCapture("cam0");
+        //CameraServer server = CameraServer.getInstance();
+    	//server.setQuality(50);
+    	//server.startAutomaticCapture("cam0");
     }
 	
 	public void disabledPeriodic() {

@@ -1,9 +1,9 @@
 package org.usfirst.frc.team2903.robot;
 
-import org.usfirst.frc.team2903.robot.commands.ElevatorDown;
-import org.usfirst.frc.team2903.robot.commands.ElevatorReset;
-import org.usfirst.frc.team2903.robot.commands.ElevatorUp;
 
+import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
+
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -16,16 +16,19 @@ public class OI {
 	public static Joystick Joy1 = new Joystick(0);
 	public static Joystick Joy2 = new Joystick(1);
 	
-	public static JoystickButton elevatorUpButton = new JoystickButton(controller, RobotMap.ELEVATOR_UP);
-	public static JoystickButton elevatorDownButton = new JoystickButton(controller, RobotMap.ELEVTOR_DOWN);
-	public static JoystickButton elevatorResetButton = new JoystickButton(controller, RobotMap.ELEVATOR_RESET);
+	public static CANTalon leftFrontMotor = new CANTalon(RobotMap.LeftFrontMotor);
+	public static CANTalon leftRearMotor = new CANTalon(RobotMap.LeftRearMotor);
+	public static CANTalon rightFrontMotor = new CANTalon(RobotMap.RightFrontMotor);
+	public static CANTalon rightRearMotor = new CANTalon(RobotMap.RightRearMotor);
 	
+    //public static Drive hDrive = new Drive();
 	
 	public OI()
 	{
-		elevatorUpButton.whenReleased(new ElevatorUp());
-		elevatorDownButton.whenReleased(new ElevatorDown());
-		elevatorResetButton.whenReleased(new ElevatorReset());
+		leftFrontMotor.enable();
+		leftRearMotor.enable();
+		rightFrontMotor.enable();
+		rightRearMotor.enable();
 	}
 }
 

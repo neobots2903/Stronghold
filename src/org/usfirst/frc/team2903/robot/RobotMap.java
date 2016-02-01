@@ -9,10 +9,10 @@ public class RobotMap {
 
 	
 	//drive
-    public static int FrontLeftdrive = 3;
-    public static int BackLeftdrive = 4;
-    public static int FrontRightdrive = 2;
-    public static int BackRightdrive = 5;
+    public static int RightFrontMotor = 2;
+    public static int LeftFrontMotor = 3;
+    public static int LeftRearMotor = 4;
+    public static int RightRearMotor = 5;
 
 	//Gyro
 	public static int Gyro = 0;
@@ -28,5 +28,5 @@ public class RobotMap {
 	public static int WinchMotor = 3;
 	
 	public static int KickingMotor = 4;
-	
+
 }

@@ -2,68 +2,98 @@ package org.usfirst.frc.team2903.robot.commands;
 
 import org.usfirst.frc.team2903.robot.OI;
 import org.usfirst.frc.team2903.robot.Robot;
+import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Teleop extends Command {
 
     public Teleop() {
     	requires(Robot.driveSubsystem);
-        requires(Robot.elevatorSubsystem);
-        requires(Robot.pneumaticsSubsystem);
+//        requires(Robot.pneumaticsSubsystem);
     }
 
     protected void initialize() {
     	//Robot.elevatorSubsystem.encoder.reset();
     	
-    }
+    	    }
 
    // @SuppressWarnings("deprecation")
 	protected void execute() {
 		
-/* this is done in the elevator up and down commands		
-    	Robot.elevatorSubsystem.speedControl();
-		Robot.elevatorSubsystem.moveElevatorUpCheck();
-		Robot.elevatorSubsystem.moveElevatorDownCheck();
-*/
-    	//Robot.driveSubsystem.drive(OI.controller.getRawAxis(0), OI.controller.getRawAxis(2),OI.controller.getRawAxis(1));
-  		Robot.driveSubsystem.drive(OI.Joy2.getX(), OI.Joy1.getY(), OI.Joy1.getX());
+		double forward = OI.Joy2.getY(); // logitech gampad left X, positive is forward
+    	double turn = OI.Joy2.getX(); //logitech gampad right X, positive means turn right
+    	
+    	double leftSpeed;
+    	double rightSpeed;
+    	//boolean retval = Robot.driveSubsystem.robotDrive.isAlive();
+		Robot.driveSubsystem.arcadeDrive(turn, forward);
+
+		if (OI.Joy1.getRawButton(1))
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
+		else if (OI.Joy1.getRawButton(2))
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
+		else if (OI.Joy1.getRawButton(3))
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeController1Joystick;
+		else if (OI.Joy1.getRawButton(4))
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeController2Joystick;
+		else if (OI.Joy1.getRawButton(5))
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveController;
+		else if (OI.Joy1.getRawButton(6))
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveJoysticks;
+		
+		//if (Robot.driveSubsystem.driveType != Drive2903.DriveType.TankDriveController &&
+				//Robot.driveSubsystem.driveType != Drive2903.DriveType.TankDriveJoysticks)
+	
+		{
+			switch (Robot.driveSubsystem.driveType)
+					{
+				case ArcadeMode1Joystick:
+					forward = OI.Joy1.getX(); // logitech gampad left X, positive is forward
+		    		turn = OI.Joy1.getY(); //logitech gampad right X, positive means turn right
+		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
+					break;
+				case ArcadeMode2Joystick:
+					forward = OI.Joy1.getX(); // logitech gampad left X, positive is forward
+		    		turn = OI.Joy2.getY(); //logitech gampad right X, positive means turn right
+		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
+					break;
+				case ArcadeModeController1Joystick:
+					forward = OI.controller.getY(Hand.kLeft); // logitech gampad left X, positive is forward
+		    		turn = OI.controller.getX(Hand.kLeft); //logitech gampad right X, positive means turn right
+		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
+					break;
+				case ArcadeModeController2Joystick:
+					forward = OI.controller.getY(Hand.kLeft); // logitech gampad left X, positive is forward
+					turn = OI.controller.getX(Hand.kRight); //logitech gampad right X, positive means turn right
+		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
+					break;
+				case TankDriveController:
+					leftSpeed = OI.controller.getY(Hand.kLeft);
+					rightSpeed = OI.controller.getY(Hand.kRight);
+					Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+					break;
+				case TankDriveJoysticks:
+					leftSpeed = OI.Joy1.getX();
+					rightSpeed = OI.Joy2.getY();
+					Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+					break;
+					
+					}
+	    		
+			
+		}
+		//else
+		{
+			 //tank drive
+		}
+	}
   
-  		// these could also be done in commands, but they work just as well here...
-  		if(OI.controller.getRawButton(5)){
-    		Robot.pneumaticsSubsystem.leftarmopen();
-    	}if(OI.controller.getRawButton(6)){
-    		Robot.pneumaticsSubsystem.rightarmopen();
-    	}if(OI.controller.getRawButton(7)){
-    		Robot.pneumaticsSubsystem.leftarmclose();
-    	}if(OI.controller.getRawButton(8)){
-    		Robot.pneumaticsSubsystem.rightarmclose();
-    	}
+   	
 
     	
-/*
- *  This is done in the ElevatorUp, Down and Reset commands
- *   
-    	if(OI.controller.getRawButton(2)){
-    		Robot.elevatorSubsystem.moveElevatorUp();
-    		edu.wpi.first.wpilibj.Timer.delay(.1);
-    	} else if(OI.controller.getRawButton(3)){
-    		Robot.elevatorSubsystem.moveElevatorDown();
-    		edu.wpi.first.wpilibj.Timer.delay(.1);
-    	}
-    	else if(OI.controller.getRawButton(4)){
-    		Robot.elevatorSubsystem.toteHeight = 0;
-    		Robot.elevatorSubsystem.elevatorReset();
-    	}
-*/
-    	SmartDashboard.putNumber("Encoder", Robot.elevatorSubsystem.encoder.get());
-    	SmartDashboard.putNumber("Tote Height", Robot.elevatorSubsystem.toteHeight);
-    	SmartDashboard.putBoolean("Top Limit", Robot.elevatorSubsystem.topLimitAct);
-    	SmartDashboard.putNumber("autoSpeed",Robot.elevatorSubsystem.getAutoSpeed());
-    	
-
-    }
 
     protected boolean isFinished() {
         return false;
