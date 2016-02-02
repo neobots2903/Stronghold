@@ -20,6 +20,9 @@ public class OI {
 	public static CANTalon leftRearMotor = new CANTalon(RobotMap.LeftRearMotor);
 	public static CANTalon rightFrontMotor = new CANTalon(RobotMap.RightFrontMotor);
 	public static CANTalon rightRearMotor = new CANTalon(RobotMap.RightRearMotor);
+	public static CANTalon RightShooter = new CANTalon(RobotMap.RightShooter);
+	public static CANTalon LeftShooter = new CANTalon(RobotMap.LeftShooter);
+	// add kicker when available 
 	
     //public static Drive hDrive = new Drive();
 	
@@ -29,6 +32,9 @@ public class OI {
 		leftRearMotor.enable();
 		rightFrontMotor.enable();
 		rightRearMotor.enable();
+		LeftShooter.enable();
+		RightShooter.enable();
+		// add kicker when available 
 	}
 }
 

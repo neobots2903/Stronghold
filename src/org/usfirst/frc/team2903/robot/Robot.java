@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2903.robot.commands.Teleop;
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
+import org.usfirst.frc.team2903.robot.subsystems.Shooter;
 
 
 /**
@@ -21,6 +22,7 @@ import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
 public class Robot extends IterativeRobot {
 
 	public static Drive2903 driveSubsystem;
+	public static Shooter shooterSubsystem;
 //	public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
 	public static OI oi;
 
@@ -33,6 +35,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
 		driveSubsystem = new org.usfirst.frc.team2903.robot.subsystems.Drive2903();
+		shooterSubsystem = new Shooter();
         //autonomousCommand = new Auto();
         teleopCommand = new Teleop();
         //CameraServer server = CameraServer.getInstance();
