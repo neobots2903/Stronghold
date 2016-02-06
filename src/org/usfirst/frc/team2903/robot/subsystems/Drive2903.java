@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 
 import org.usfirst.frc.team2903.robot.OI;
-import org.usfirst.frc.team2903.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drive2903 extends Subsystem {

@@ -15,7 +15,7 @@ public class RobotMap {
     public static int RightRearMotor = 5;
 
     //Gyro
-    public static int Gyro = 0;
+    public static int Gyro = 2;
 
     //Shooters
     public static int ShooterMotor1 = 0;

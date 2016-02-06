@@ -7,8 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team2903.robot.commands.Auto;
 import org.usfirst.frc.team2903.robot.commands.Teleop;
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
+import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
 
 
 /**
@@ -23,8 +25,8 @@ public class Robot extends IterativeRobot {
 	public static Drive2903 driveSubsystem;
 //	public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
 	public static OI oi;
-
-    Command autonomousCommand;
+	public static Gyro2903 gyroSubsystem;
+	Command autonomousCommand;
     Command teleopCommand;
     
     /**
@@ -32,8 +34,9 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.      */
     public void robotInit() {
 		oi = new OI();
-		driveSubsystem = new org.usfirst.frc.team2903.robot.subsystems.Drive2903();
-        //autonomousCommand = new Auto();
+		driveSubsystem = new Drive2903();
+		gyroSubsystem = new Gyro2903();
+        autonomousCommand = new Auto();
         teleopCommand = new Teleop();
         //CameraServer server = CameraServer.getInstance();
     	//server.setQuality(50);
