@@ -30,7 +30,29 @@ public class Teleop extends Command {
     	double rightSpeed;
     	//boolean retval = Robot.driveSubsystem.robotDrive.isAlive();
 		Robot.driveSubsystem.arcadeDrive(turn, forward);
-
+/*
+ * when a is pressed and held, both motors turn in opposite directions outward
+ * on release they stop
+ * when b is pressed and held, both motors turn in opposite directions inward 
+ * on release they stop 
+ */
+		if(OI.controller.getRawButton(1)) 
+			// high goal 
+			Robot.shooterSubsystem.enableHighGoalMode();
+		else if (OI.controller.getRawButton(2))
+			Robot.shooterSubsystem.enableLowGoalMode();
+		else
+			// stop shooter motors
+			Robot.shooterSubsystem.disableShooter();
+		
+		if(OI.controller.getTrigger(Hand.kRight))
+			//activate kickera
+			;
+			
+		if(OI.controller.getRawButton(4))
+			Robot.shooterSubsystem.enablePickupMode();
+			;
+			
 		if (OI.Joy1.getRawButton(1))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
 		else if (OI.Joy1.getRawButton(2))
