@@ -54,7 +54,7 @@ public class Teleop extends Command {
 			;
 			
 		if (OI.Joy1.getRawButton(1))
-			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode1Joystick;
 		else if (OI.Joy1.getRawButton(2))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
 		else if (OI.Joy1.getRawButton(3))
