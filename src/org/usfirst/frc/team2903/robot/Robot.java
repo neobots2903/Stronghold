@@ -12,7 +12,8 @@ import org.usfirst.frc.team2903.robot.commands.Teleop;
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
 
 import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
-import org.usfirst.frc.team2903.robot.subsystems.Shooter;
+import org.usfirst.frc.team2903.robot.subsystems.Shooter2903;
+
 
 
 /**
@@ -25,7 +26,7 @@ import org.usfirst.frc.team2903.robot.subsystems.Shooter;
 public class Robot extends IterativeRobot {
 
 	public static Drive2903 driveSubsystem;
-	public static Shooter shooterSubsystem;
+	public static Shooter2903 shooterSubsystem;
 //	public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
 	public static OI oi;
 	public static Gyro2903 gyroSubsystem;
@@ -40,7 +41,7 @@ public class Robot extends IterativeRobot {
 
 		driveSubsystem = new Drive2903();
 		gyroSubsystem = new Gyro2903();
-		shooterSubsystem = new Shooter();
+		shooterSubsystem = new Shooter2903();
 		autonomousCommand = new Auto();
 
         teleopCommand = new Teleop();

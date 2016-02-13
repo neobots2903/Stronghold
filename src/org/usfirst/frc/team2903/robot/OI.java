@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
 	public static Joystick JoyOp = new Joystick(2);
 	public static Joystick Joy1 = new Joystick(0);
-	public static Joystick Joy2 = new Joystick(1);
+	
 	
 	public static CANTalon leftFrontMotor = new CANTalon(RobotMap.LeftFrontMotor);
 	public static CANTalon leftRearMotor = new CANTalon(RobotMap.LeftRearMotor);

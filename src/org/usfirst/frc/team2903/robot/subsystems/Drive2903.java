@@ -13,10 +13,10 @@ public class Drive2903 extends Subsystem {
 	
 	public enum DriveType {
 		ArcadeMode1Joystick,
-		ArcadeMode2Joystick,
+		//ArcadeMode2Joystick,
 		ArcadeModeJoyOp,
 		//ArcadeModeJoyOp2,
-		TankDriveJoysticks,
+		//TankDriveJoysticks,
 		//TankDriveJoyOp
 	};
 	

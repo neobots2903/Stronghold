@@ -23,11 +23,11 @@ public class Teleop extends Command {
    // @SuppressWarnings("deprecation")
 	protected void execute() {
 		
-		double forward = OI.Joy2.getY(); // logitech gampad left X, positive is forward
-    	double turn = OI.Joy2.getX(); //logitech gampad right X, positive means turn right
+		double forward = OI.Joy1.getY(); // logitech gampad left X, positive is forward
+    	double turn = OI.Joy1.getX(); //logitech gampad right X, positive means turn right
     	
-    	double leftSpeed;
-    	double rightSpeed;
+//    	double leftSpeed;
+//    	double rightSpeed;
     	//boolean retval = Robot.driveSubsystem.robotDrive.isAlive();
 		Robot.driveSubsystem.arcadeDrive(turn, forward);
 /*
@@ -53,18 +53,18 @@ public class Teleop extends Command {
 			Robot.shooterSubsystem.enablePickupMode();
 			;
 			
-		if (OI.Joy1.getRawButton(7))
+		if (OI.JoyOp.getRawButton(7))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode1Joystick;
-		else if (OI.Joy1.getRawButton(8))
-			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
-		else if (OI.Joy1.getRawButton(9))
+//		else if (OI.Joy1.getRawButton(8))
+//			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
+		else if (OI.JoyOp.getRawButton(9))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeJoyOp;
 //		else if (OI.Joy1.getRawButton(4))
 //			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeJoyOp2;
 //		else if (OI.Joy1.getRawButton(5))
 //			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveJoyOp;
-		else if (OI.Joy1.getRawButton(10))
-			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveJoysticks;
+//		else if (OI.Joy1.getRawButton(10))
+//			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveJoysticks;
 		
 		//if (Robot.driveSubsystem.driveType != Drive2903.DriveType.TankDriveJoyOp &&
 				//Robot.driveSubsystem.driveType != Drive2903.DriveType.TankDriveJoysticks)
@@ -77,11 +77,11 @@ public class Teleop extends Command {
 		    		turn = OI.Joy1.getY(); //logitech gampad right X, positive means turn right
 		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
 					break;
-				case ArcadeMode2Joystick:
-					forward = OI.Joy1.getX(); // logitech gampad left X, positive is forward
-		    		turn = OI.Joy2.getY(); //logitech gampad right X, positive means turn right
-		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
-					break;
+//				case ArcadeMode2Joystick:
+//					forward = OI.Joy1.getX(); // logitech gampad left X, positive is forward
+//		    		turn = OI.Joy2.getY(); //logitech gampad right X, positive means turn right
+//		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
+//					break;
 				case ArcadeModeJoyOp:
 					forward = OI.JoyOp.getY(); // logitech gampad left X, positive is forward
 		    		turn = OI.JoyOp.getX(); //logitech gampad right X, positive means turn right
@@ -97,11 +97,11 @@ public class Teleop extends Command {
 //					rightSpeed = OI.JoyOp.getY();
 //					Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
 //					break;
-				case TankDriveJoysticks:
-					leftSpeed = OI.Joy1.getX();
-					rightSpeed = OI.Joy2.getY();
-					Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
-					break;
+//				case TankDriveJoysticks:
+//					leftSpeed = OI.Joy1.getX();
+//					rightSpeed = OI.Joy2.getY();
+//					Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+//					break;
 					
 					}
 	    		
