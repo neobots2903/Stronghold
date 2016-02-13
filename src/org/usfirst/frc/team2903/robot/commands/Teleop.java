@@ -36,37 +36,37 @@ public class Teleop extends Command {
  * when b is pressed and held, both motors turn in opposite directions inward 
  * on release they stop 
  */
-		if(OI.controller.getRawButton(1)) 
+		if(OI.JoyOp.getRawButton(3)) 
 			// high goal 
 			Robot.shooterSubsystem.enableHighGoalMode();
-		else if (OI.controller.getRawButton(2))
+		else if (OI.JoyOp.getRawButton(4))
 			Robot.shooterSubsystem.enableLowGoalMode();
 		else
 			// stop shooter motors
 			Robot.shooterSubsystem.disableShooter();
 		
-		if(OI.controller.getTrigger(Hand.kRight))
-			//activate kickera
-			;
+//		if(OI.JoyOp.getRawButton(1))
+//			//activate kicker
+//			;
 			
-		if(OI.controller.getRawButton(4))
+		if(OI.JoyOp.getRawButton(5))
 			Robot.shooterSubsystem.enablePickupMode();
 			;
 			
-		if (OI.Joy1.getRawButton(1))
+		if (OI.Joy1.getRawButton(7))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode1Joystick;
-		else if (OI.Joy1.getRawButton(2))
+		else if (OI.Joy1.getRawButton(8))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode2Joystick;
-		else if (OI.Joy1.getRawButton(3))
-			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeController1Joystick;
-		else if (OI.Joy1.getRawButton(4))
-			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeController2Joystick;
-		else if (OI.Joy1.getRawButton(5))
-			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveController;
-		else if (OI.Joy1.getRawButton(6))
+		else if (OI.Joy1.getRawButton(9))
+			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeJoyOp;
+//		else if (OI.Joy1.getRawButton(4))
+//			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeModeJoyOp2;
+//		else if (OI.Joy1.getRawButton(5))
+//			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveJoyOp;
+		else if (OI.Joy1.getRawButton(10))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.TankDriveJoysticks;
 		
-		//if (Robot.driveSubsystem.driveType != Drive2903.DriveType.TankDriveController &&
+		//if (Robot.driveSubsystem.driveType != Drive2903.DriveType.TankDriveJoyOp &&
 				//Robot.driveSubsystem.driveType != Drive2903.DriveType.TankDriveJoysticks)
 	
 		{
@@ -82,21 +82,21 @@ public class Teleop extends Command {
 		    		turn = OI.Joy2.getY(); //logitech gampad right X, positive means turn right
 		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
 					break;
-				case ArcadeModeController1Joystick:
-					forward = OI.controller.getY(Hand.kLeft); // logitech gampad left X, positive is forward
-		    		turn = OI.controller.getX(Hand.kLeft); //logitech gampad right X, positive means turn right
+				case ArcadeModeJoyOp:
+					forward = OI.JoyOp.getY(); // logitech gampad left X, positive is forward
+		    		turn = OI.JoyOp.getX(); //logitech gampad right X, positive means turn right
 		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
 					break;
-				case ArcadeModeController2Joystick:
-					forward = OI.controller.getY(Hand.kLeft); // logitech gampad left X, positive is forward
-					turn = OI.controller.getX(Hand.kRight); //logitech gampad right X, positive means turn right
-		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
-					break;
-				case TankDriveController:
-					leftSpeed = OI.controller.getY(Hand.kLeft);
-					rightSpeed = OI.controller.getY(Hand.kRight);
-					Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
-					break;
+//				case ArcadeModeJoyOp2:
+//					forward = OI.JoyOp.getY(Hand.kLeft); // logitech gampad left X, positive is forward
+//					turn = OI.JoyOp.getX(Hand.kRight); //logitech gampad right X, positive means turn right
+//		    		Robot.driveSubsystem.arcadeDrive(forward, turn);
+//					break;
+//				case TankDriveJoyOp:
+//					leftSpeed = OI.JoyOp.getY();
+//					rightSpeed = OI.JoyOp.getY();
+//					Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+//					break;
 				case TankDriveJoysticks:
 					leftSpeed = OI.Joy1.getX();
 					rightSpeed = OI.Joy2.getY();
@@ -107,10 +107,7 @@ public class Teleop extends Command {
 	    		
 			
 		}
-		//else
-		{
-			 //tank drive
-		}
+		
 	}
   
    	

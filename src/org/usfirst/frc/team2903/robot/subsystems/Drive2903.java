@@ -8,13 +8,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drive2903 extends Subsystem {
 	
+	static int count = OI.enc2.get();
+	static int rawcount = OI.enc2.get();
+	
 	public enum DriveType {
 		ArcadeMode1Joystick,
 		ArcadeMode2Joystick,
-		ArcadeModeController1Joystick,
-		ArcadeModeController2Joystick,
+		ArcadeModeJoyOp,
+		//ArcadeModeJoyOp2,
 		TankDriveJoysticks,
-		TankDriveController
+		//TankDriveJoyOp
 	};
 	
 	//drive mode selection 
