@@ -3,6 +3,7 @@ package org.usfirst.frc.team2903.robot.subsystems;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 
+import org.usfirst.frc.team2903.robot.Robot;
 import org.usfirst.frc.team2903.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -73,12 +74,19 @@ public class Drive2903 extends Subsystem {
     	// enable the encoder
     	driveSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     	
-    	//boolean retval = robotDrive.isAlive();
+    	
     	count = driveSpeedEncoder.get();
     	rawCount = driveSpeedEncoder.get();
 
 	}
+
+	public void getDistanceTraveled(){
+	robotDrive.arcadeDrive(0, 0);
+	if(robotDrive.isAlive()==true){
+	driveSpeedEncoder.get();
 			
+	}
+	}
 
 	public void arcadeDrive(double forward, double turn) {
 		
