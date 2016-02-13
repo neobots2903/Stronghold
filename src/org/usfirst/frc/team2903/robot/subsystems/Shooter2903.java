@@ -15,11 +15,11 @@ public class Shooter2903 extends Subsystem {
 	static int count;
 	static int rawCount;
 
-	static CANTalon rightShooter = new CANTalon(RobotMap.RightShooter);
-	static CANTalon leftShooter = new CANTalon(RobotMap.LeftShooter);
+	static CANTalon rightShooter;
+	static CANTalon leftShooter;
 
 	// encoder for shooter motors
-	static Encoder shooterSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	static Encoder shooterSpeedEncoder;
 
 	public Shooter2903() {
 		// instantiate the talon motor controllers

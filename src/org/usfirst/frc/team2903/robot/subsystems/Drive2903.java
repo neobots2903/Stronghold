@@ -10,15 +10,28 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Drive2903 extends Subsystem {
 	
 	static int count;
-	static int rawcount;
+	public static int getCount() {
+		if (driveSpeedEncoder != null)
+			return count = driveSpeedEncoder.get();
+		else
+			return 0;
+	}
+
+	static int rawCount;
+	public static int getRawcount() {
+		if (driveSpeedEncoder != null)
+			return rawCount = driveSpeedEncoder.getRaw();
+		else
+			return 0;
+	}
 	
-	CANTalon leftFrontMotor = new CANTalon(RobotMap.LeftFrontMotor);
-	CANTalon leftRearMotor = new CANTalon(RobotMap.LeftRearMotor);
-	CANTalon rightFrontMotor = new CANTalon(RobotMap.RightFrontMotor);
-	CANTalon rightRearMotor = new CANTalon(RobotMap.RightRearMotor);
+	CANTalon leftFrontMotor;
+	CANTalon leftRearMotor;
+	CANTalon rightFrontMotor;
+	CANTalon rightRearMotor;
 
 	// here is the encoder
-	public static Encoder driveSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	public static Encoder driveSpeedEncoder;
 
 	
 	public enum DriveType {
@@ -62,7 +75,7 @@ public class Drive2903 extends Subsystem {
     	
     	//boolean retval = robotDrive.isAlive();
     	count = driveSpeedEncoder.get();
-    	rawcount = driveSpeedEncoder.get();
+    	rawCount = driveSpeedEncoder.get();
 
 	}
 			

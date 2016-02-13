@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Gyro2903 extends Subsystem {
+	
 	public AnalogGyro gyro;
 
 	public Gyro2903() {
