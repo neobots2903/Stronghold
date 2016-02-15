@@ -24,14 +24,14 @@ import org.usfirst.frc.team2903.robot.subsystems.Shooter2903;
 public class Robot extends IterativeRobot {
 
 	public static Drive2903 driveSubsystem;
-	public static Shooter2903 shooterSubsystem;
+//	public static Shooter2903 shooterSubsystem;
 	// public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
 	// public static OI oi;
 	public static Gyro2903 gyroSubsystem;
 	Command autonomousCommand;
 	Command teleopCommand;
 
-	public static Joystick joyOp = new Joystick(2);
+	public static Joystick joyOp = new Joystick(1);
 	public static Joystick joy1 = new Joystick(0);
 
 	/**
@@ -43,8 +43,8 @@ public class Robot extends IterativeRobot {
 
 		driveSubsystem = new Drive2903();
 		gyroSubsystem = new Gyro2903();
-		shooterSubsystem = new Shooter2903();
-		autonomousCommand = new Auto();
+//		shooterSubsystem = new Shooter2903();
+		//autonomousCommand = new Auto();
 
 		teleopCommand = new Teleop();
 		// CameraServer server = CameraServer.getInstance();

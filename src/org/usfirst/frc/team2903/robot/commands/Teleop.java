@@ -2,8 +2,8 @@ package org.usfirst.frc.team2903.robot.commands;
 
 import org.usfirst.frc.team2903.robot.Robot;
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
-
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Teleop extends Command {
@@ -20,7 +20,6 @@ public class Teleop extends Command {
 
 	// @SuppressWarnings("deprecation")
 	protected void execute() {
-
 		double forward = Robot.joy1.getY(); // logitech gampad left X, positive
 											// is forward
 		double turn = Robot.joy1.getX(); // logitech gampad right X, positive
@@ -35,22 +34,22 @@ public class Teleop extends Command {
 		 * outward on release they stop when b is pressed and held, both motors
 		 * turn in opposite directions inward on release they stop
 		 */
-		if (Robot.joyOp.getRawButton(3))
-			// high goal
-			Robot.shooterSubsystem.enableHighGoalMode();
-		else if (Robot.joyOp.getRawButton(4))
-			Robot.shooterSubsystem.enableLowGoalMode();
-		else
-			// stop shooter motors
-			Robot.shooterSubsystem.disableShooter();
-
-		// if(Robot.joyOp.getRawButton(1))
-		// //activate kicker
-		// ;
-
-		if (Robot.joyOp.getRawButton(5))
-			Robot.shooterSubsystem.enablePickupMode();
-		;
+//		if (Robot.joyOp.getRawButton(3))
+//			// high goal
+//			Robot.shooterSubsystem.enableHighGoalMode();
+//		else if (Robot.joyOp.getRawButton(4))
+//			Robot.shooterSubsystem.enableLowGoalMode();
+//		else
+//			// stop shooter motors
+//			Robot.shooterSubsystem.disableShooter();
+//
+//		// if(Robot.joyOp.getRawButton(1))
+//		// //activate kicker
+//		// ;
+//
+//		if (Robot.joyOp.getRawButton(5))
+//			Robot.shooterSubsystem.enablePickupMode();
+//		;
 
 		if (Robot.joyOp.getRawButton(7))
 			Robot.driveSubsystem.driveType = Drive2903.DriveType.ArcadeMode1Joystick;
@@ -113,11 +112,9 @@ public class Teleop extends Command {
 			// rightSpeed = Robot.joy2.getY();
 			// Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
 			// break;
-
+			
 			}
-
 		}
-
 	}
 
 	protected boolean isFinished() {

@@ -9,10 +9,10 @@ package org.usfirst.frc.team2903.robot;
 public class RobotMap {
 
 	// drive
-	public static int RightFrontMotor = 2;
-	public static int LeftFrontMotor = 3;
-	public static int LeftRearMotor = 4;
-	public static int RightRearMotor = 5;
+	public static int RightTopMotor = 30;
+	public static int LeftTopMotor = 31;
+	public static int LeftBottomMotor = 33;
+	public static int RightBottomMotor = 32;
 
 	public static int RightShooter = 20;
 	public static int LeftShooter = 21;
@@ -24,7 +24,7 @@ public class RobotMap {
 	// Pneumatics
 
 	// Gyro
-	public static int Gyro = 2;
+	public static int Gyro = 0;
 
 	// Shooters
 	public static int ShooterMotor1 = 0;

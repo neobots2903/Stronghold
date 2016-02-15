@@ -2,18 +2,18 @@ package org.usfirst.frc.team2903.robot.commands;
 
 import org.usfirst.frc.team2903.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
-
+import org.usfirst.frc.team2903.robot.commands.commoners.TurnWithGyro;
 public class Auto extends Command {
 
 	public Auto() {
 		requires(Robot.driveSubsystem);
-		requires(Robot.gyroSubsystem);
+//		requires(Robot.gyroSubsystem);
 	}
 
-	// private void requires(Gyro2903 gyroSubsystem) {
+	 //private void requires(Gyro2903 gyroSubsystem) {
 	// // TODO Auto-generated method stub
 	//
-	// }
+	 //}
 
 	protected void end() {
 
@@ -38,7 +38,7 @@ public class Auto extends Command {
 
 		while (stopTime <= (startTime + autoDuration)) {
 			stopTime = System.currentTimeMillis();
-			Robot.gyroSubsystem.gyroPID(Robot.driveSubsystem);
+//			Robot.gyroSubsystem.gyroPID(Robot.driveSubsystem);
 
 		}
 

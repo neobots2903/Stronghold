@@ -7,7 +7,7 @@ public class AutoBase extends Command {
 
 	public AutoBase() {
 		requires(Robot.driveSubsystem);
-		requires(Robot.gyroSubsystem);
+//		requires(Robot.gyroSubsystem);
 	}
 
 	protected void initDefaultCommand() {

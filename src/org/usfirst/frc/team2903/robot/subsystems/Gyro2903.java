@@ -2,42 +2,25 @@ package org.usfirst.frc.team2903.robot.subsystems;
 
 import org.usfirst.frc.team2903.robot.RobotMap;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Gyro2903 extends Subsystem {
 	
-	public AnalogGyro gyro;
+	public Gyro gyro;
 
 	public Gyro2903() {
-		gyro = new AnalogGyro(RobotMap.Gyro);
+			gyro = new AnalogGyro(RobotMap.Gyro);
 	}
-
-	public void gyroPID(Drive2903 driveSubsystem) {
-		double targetAngle = 0;
+	
+	public void GyroPostion() {
+		
 		double gyroAngle = gyro.getAngle();
-
-		double leftSpeed;
-		double rightSpeed;
-
-		// requires(Robot.driveSubsystem);
-
-		if (gyroAngle != targetAngle) {
-			if (gyroAngle > 180 - targetAngle) {
-				leftSpeed = 0.5;
-				rightSpeed = -0.5;
-				driveSubsystem.tankDrive(leftSpeed, rightSpeed);
-
-			}
-			if (gyroAngle < 180 - targetAngle) {
-				leftSpeed = -0.5;
-				rightSpeed = 0.5;
-				driveSubsystem.tankDrive(leftSpeed, rightSpeed);
-
-			}
-		}
-
+		
 	}
-
+	
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub

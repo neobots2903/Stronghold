@@ -51,10 +51,10 @@ public class Drive2903 extends Subsystem {
 	public Drive2903 () {
 
 		// instantiate the talons
-		leftFrontMotor = new CANTalon(RobotMap.LeftFrontMotor);
-		leftRearMotor = new CANTalon(RobotMap.LeftRearMotor);
-		rightFrontMotor = new CANTalon(RobotMap.RightFrontMotor);
-		rightRearMotor = new CANTalon(RobotMap.RightRearMotor);
+		leftFrontMotor = new CANTalon(RobotMap.LeftTopMotor);
+		leftRearMotor = new CANTalon(RobotMap.LeftBottomMotor);
+		rightFrontMotor = new CANTalon(RobotMap.RightTopMotor);
+		rightRearMotor = new CANTalon(RobotMap.RightBottomMotor);
 		
 		// enable the motors
 		leftFrontMotor.enable();
