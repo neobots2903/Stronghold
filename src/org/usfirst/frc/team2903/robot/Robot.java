@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
 		driveSubsystem = new Drive2903();
 		gyroSubsystem = new Gyro2903();
 //		shooterSubsystem = new Shooter2903();
-		//autonomousCommand = new Auto();
+		autonomousCommand = new Auto();
 
 		teleopCommand = new Teleop();
 		// CameraServer server = CameraServer.getInstance();

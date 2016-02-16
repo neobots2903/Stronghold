@@ -21,6 +21,11 @@ public class Auto extends Command {
 
 	protected void execute() {
 
+		Robot.driveSubsystem.arcadeDrive(0.5, 0);
+
+			//Robot.gyroSubsystem.GyroPostion();
+			TurnWithGyro.GyroPID(Robot.driveSubsystem, Robot.gyroSubsystem);
+
 	}
 
 	protected void initialize() {
@@ -32,15 +37,18 @@ public class Auto extends Command {
 		double rightSpeed;
 		leftSpeed = 0.5;
 		rightSpeed = 0.5;
+		Robot.gyroSubsystem.gyro.calibrate();
+
 		// Robot.driveSubsystem.arcadeDrive(0,autoForwardSpeed);
 
-		Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
-
-		while (stopTime <= (startTime + autoDuration)) {
-			stopTime = System.currentTimeMillis();
-//			Robot.gyroSubsystem.gyroPID(Robot.driveSubsystem);
-
-		}
+//		Robot.driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+//
+//		while (stopTime <= (startTime + autoDuration)) {
+//			stopTime = System.currentTimeMillis();
+////			Robot.gyroSubsystem.gyroPID(Robot.driveSubsystem);
+//			Robot.gyroSubsystem.GyroPostion();
+//			TurnWithGyro.GyroPID(Robot.driveSubsystem, Robot.gyroSubsystem);
+//		}
 
 		// Robot.driveSubsystem.arcadeDrive(0,0);
 

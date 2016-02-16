@@ -13,12 +13,16 @@ public class Gyro2903 extends Subsystem {
 
 	public Gyro2903() {
 			gyro = new AnalogGyro(RobotMap.Gyro);
+			gyro.calibrate();
 	}
 	
 	public void GyroPostion() {
 		
-		double gyroAngle = gyro.getAngle();
+		double gyroAngle;
 		
+		gyro.reset();
+		gyroAngle = gyro.getAngle();
+		SmartDashboard.putNumber("gyroAngle", gyroAngle);
 	}
 	
 	@Override

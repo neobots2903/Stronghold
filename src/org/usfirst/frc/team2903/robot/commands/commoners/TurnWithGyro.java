@@ -12,28 +12,34 @@ import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
  *
  */
 public class TurnWithGyro {
-	public void GyroPID(Drive2903 driveSubsystem, Gyro2903 gyroSubsystem) {
+	public static void GyroPID(Drive2903 driveSubsystem, Gyro2903 gyroSubsystem) {
 		double targetAngle = 0;
-		double gyroAngle = gyroSubsystem.gyro.getAngle();
+		double gyroAngle = gyroSubsystem.gyro.getAngle() % 360;
 
 		double leftSpeed;
 		double rightSpeed;
-
 		// requires(Robot.driveSubsystem);
 
-		if (gyroAngle != targetAngle) {
-			if (gyroAngle > 180 - targetAngle) {
-				leftSpeed = 0.5;
-				rightSpeed = -0.5;
-				driveSubsystem.tankDrive(leftSpeed, rightSpeed);
-
-			}
-			if (gyroAngle < 180 - targetAngle) {
+		if (gyroAngle != targetAngle ) {
+			if (gyroAngle > (targetAngle)) {
 				leftSpeed = -0.5;
 				rightSpeed = 0.5;
-				driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+				driveSubsystem.arcadeDrive(0, leftSpeed);
 
 			}
+			else {// (gyroAngle < (targetAngle)) {
+				leftSpeed = 0.5;
+				rightSpeed = -0.5;
+				driveSubsystem.arcadeDrive(0, leftSpeed);
+
+			}
+//			if (targetAngle / 180 == 0) {
+//				//turn right
+//			}
+//			else if(targetAngle / 180 == 1){
+//				//turn left
+//			}
+			
 		}
 
 	}
