@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm2903 extends Subsystem {
 
+
 	public static CANTalon armMotor;
 	boolean isReset;
 	//Potention

@@ -2,7 +2,7 @@ package org.usfirst.frc.team2903.robot.commands;
 
 import org.usfirst.frc.team2903.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2903.robot.commands.commoners.TurnWithGyro;
+import org.usfirst.frc.team2903.robot.commands.commoners.DriveStraightWithGyro;
 public class Auto extends Command {
 
 	public Auto() {
@@ -24,7 +24,7 @@ public class Auto extends Command {
 		Robot.driveSubsystem.arcadeDrive(0.5, 0);
 
 			//Robot.gyroSubsystem.GyroPostion();
-			TurnWithGyro.GyroPID(Robot.driveSubsystem, Robot.gyroSubsystem);
+			DriveStraightWithGyro.GyroPID(Robot.driveSubsystem, Robot.gyroSubsystem);
 
 	}
 
