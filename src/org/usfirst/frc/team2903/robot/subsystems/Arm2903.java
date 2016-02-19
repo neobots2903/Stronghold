@@ -61,7 +61,7 @@ public class Arm2903 extends Subsystem {
 		if (pot.get() > 0)
 			armMotor.set(-0.1);
 		else
-			armMotor.set(0)
+			armMotor.set(0);
 	}
 
 	// public void setTargetPos(value){
