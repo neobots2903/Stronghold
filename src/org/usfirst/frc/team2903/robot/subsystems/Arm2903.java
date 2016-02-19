@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 public class Arm2903 extends Subsystem {
 
-	public CANTalon armMotor;
-	boolean isReset;
-	boolean isCalibrated;
-	boolean isTargetAngleSet;
+	public CANTalon ArmMotor;
+	boolean IsReset;
+	boolean IsCalibrated;
+	boolean IsTargetAngleSet;
 
 	Potentiometer pot;
 
@@ -36,37 +36,52 @@ public class Arm2903 extends Subsystem {
 
 	public Arm2903() {
 
-		armMotor = new CANTalon(RobotMap.armMotor);
+		ArmMotor = new CANTalon(RobotMap.ArmMotor);
 
 		pot = new AnalogPotentiometer(1, 100, 0);
 
-		isReset = false;
-		isCalibrated = false;
-		isTargetAngleSet = false;
+		IsReset = false;
+		IsCalibrated = false;
+		IsTargetAngleSet = false;
 		ArmResetAngle = 0;
 		AngleError = 2;
 		MaxArmAngle = 100;
 		ArmMotorSpeed = 0.1;
 	}
 
+	// resets the arm to the calibrated angle
 	public void resetArm() {
 
 		if (pot.get() > ArmResetAngle) {
 			lowerArm();
-			isReset = false;
+			IsReset = false;
 		} else {
 			stopArm();
-			isReset = true;
+			IsReset = true;
 		}
 	}
+
+	// returns whether or not the arm is reset.
+	public boolean isReset()
+	{
+		return IsReset;
+	}
+	
 
 	// this sets the reset point of the angle and will only set the calibration
 	// once.
 	public void calibrate() {
 		// TODO Auto-generated method stub
 		ArmResetAngle = pot.get();
-		isCalibrated = true;
+		IsCalibrated = true;
 	}
+
+	// returns whether or not the reset arm angle is calibrated
+	public boolean isCalibrated()
+	{
+		return IsCalibrated;
+	}
+	
 
 	// this sets the target angle for automatic movement and the IsTargetReached
 	// method.
@@ -79,7 +94,7 @@ public class Arm2903 extends Subsystem {
 			TargetArmAngle = ArmResetAngle;
 		else
 			TargetArmAngle = armTargetAngle;
-		isTargetAngleSet = true;
+		IsTargetAngleSet = true;
 	}
 
 	// this sets the arm motor speed.
@@ -96,7 +111,7 @@ public class Arm2903 extends Subsystem {
 
 		boolean returnValue = false;
 
-		if (isCalibrated && isTargetAngleSet) {
+		if (IsCalibrated && IsTargetAngleSet) {
 
 			if (pot.get() >= (TargetArmAngle - AngleError) && pot.get() <= (TargetArmAngle + AngleError))
 				returnValue = true;
@@ -123,16 +138,19 @@ public class Arm2903 extends Subsystem {
 	public void raiseArm() {
 
 		if (pot.get() < MaxArmAngle) {
-			armMotor.set(ArmMotorSpeed);
-			stopArm();
+			ArmMotor.set(ArmMotorSpeed);
 		}
+		else
+			stopArm();
 	}
 
 	// this lowers the arm, but limits the movement to no further than the reset
 	// angle
 	public void lowerArm() {
 		if (pot.get() > ArmResetAngle) {
-			armMotor.set(ArmMotorSpeed * -1.0);
+			ArmMotor.set(ArmMotorSpeed * -1.0);
+		}
+		else{
 			stopArm();
 		}
 	}
@@ -140,7 +158,7 @@ public class Arm2903 extends Subsystem {
 	// this stops the arm from moving.
 	public void stopArm() {
 		// TODO Auto-generated method stub
-		armMotor.set(0);
+		ArmMotor.set(0);
 
 	}
 

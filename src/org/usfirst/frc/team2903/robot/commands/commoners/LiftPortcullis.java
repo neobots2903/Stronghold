@@ -14,9 +14,10 @@ public class LiftPortcullis  extends Command {
 	static double ArmTargetAngle;
 	private double ArmMoveSpeed;
 	
+	// constructor which uses default values for speed and angle
 	public LiftPortcullis()
 	{
-		super("LiftPortcullis");
+		super("LiftPortcullis()");
 		
 		requires(Robot.armSubsystem);
 		
@@ -24,22 +25,46 @@ public class LiftPortcullis  extends Command {
 		ArmTargetAngle = 45; 
 		ArmMoveSpeed = 0.1;
 	}
+
+	// constructor which sets arm speed
+	public LiftPortcullis(double armSpeed)
+	{
+		super("LiftPortcullis(double)");
+		
+		requires(Robot.armSubsystem);
+		
+		// TODO: Set this to an appropriate value
+		ArmTargetAngle = 45; 
+		ArmMoveSpeed = armSpeed;
+	}
+
+	// constructor which sets arm speed and target angle
+	public LiftPortcullis(double armSpeed, double targetAngle)
+	{
+		super("LiftPortcullis(double,double)");
+		
+		requires(Robot.armSubsystem);
+		
+		// TODO: Set this to an appropriate value
+		ArmTargetAngle = targetAngle; 
+		ArmMoveSpeed = armSpeed;
+	}
 	
 	@Override
 	protected void initialize() {
-		// TODO Auto-generated method stub
-		
-		// get the current value of the potentiometer
-		// and use that as the reset value
-		 Robot.armSubsystem.calibrate();
+
+		if (!Robot.armSubsystem.isCalibrated()) {
+			// get the current value of the potentiometer
+			// and use that as the reset value
+			 Robot.armSubsystem.calibrate();
+		}
 		 Robot.armSubsystem.setTargetAngle(ArmTargetAngle);
 		 Robot.armSubsystem.setMotorSpeed(ArmMoveSpeed);
+		 Robot.armSubsystem.moveArm();
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
-		Robot.armSubsystem.moveArm();
 	}
 
 	@Override
