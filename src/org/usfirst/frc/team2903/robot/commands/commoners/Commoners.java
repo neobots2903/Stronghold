@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2903.robot.commands;
+package org.usfirst.frc.team2903.robot.commands.commoners;
 
 public class Commoners {
 	

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2903.robot.commands.Auto;
 import org.usfirst.frc.team2903.robot.commands.Teleop;
+import org.usfirst.frc.team2903.robot.subsystems.CameraVision2903;
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
 
 import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static Gyro2903 gyroSubsystem;
 	Command autonomousCommand;
 	Command teleopCommand;
+	public static CameraVision2903 cameraSubsystem   ;
 
 	public static Joystick joyOp = new Joystick(1);
 	public static Joystick joy1 = new Joystick(0);
@@ -43,6 +45,8 @@ public class Robot extends IterativeRobot {
 
 		driveSubsystem = new Drive2903();
 		gyroSubsystem = new Gyro2903();
+		cameraSubsystem = new CameraVision2903();
+		
 //		shooterSubsystem = new Shooter2903();
 		//autonomousCommand = new Auto();
 
