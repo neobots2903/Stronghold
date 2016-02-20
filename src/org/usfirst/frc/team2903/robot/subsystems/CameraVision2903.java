@@ -76,11 +76,11 @@ public class CameraVision2903 extends Subsystem {
 		return offsetBounding[index];
 	}
 
-	public double GetVerticleAngle(int index) {
+	public double GetVerticalAngle(int index) {
 
-		double VerticleAngle = java.lang.Math.atan(GetOffsetBounding(index / 460));
+		double VerticalAngle = java.lang.Math.atan(GetOffsetBounding(index / 460));
 
-		return VerticleAngle;
+		return VerticalAngle;
 	}
 
 	public void displayCameraValues() {

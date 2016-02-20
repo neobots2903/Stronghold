@@ -24,7 +24,7 @@ public class TurnWithGyro extends Command{
 
 	static TurnDirection turnDirection;
 
-	public TurnWithGyro(int targetangle) {
+	public TurnWithGyro(double horizontalAngle) {
 		double gyroAngle = Robot.gyroSubsystem.gyro.getAngle() % 360;
 		
 		if (gyroAngle != TargetAngle) {

@@ -1,19 +1,28 @@
 package org.usfirst.frc.team2903.robot.commands.commoners;
 
+import org.usfirst.frc.team2903.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class SpinUpShooter extends Command {
+public class HorizontalAim extends Command {
 
-	public SpinUpShooter() {
-		super("SpinUpShooter");
-		
-		//requires("Robot.shootSubsystem");s
+	int index;
+	Command turnGyro;
+
+	public HorizontalAim(int index) {
+		super("HorizontalAim");
+		this.index = index;
+		requires(Robot.driveSubsystem);
+		requires(Robot.cameraSubsystem);
+		requires(Robot.gyroSubsystem);
 	}
 
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-
+		double HorizontalAngle = Robot.cameraSubsystem.GetHorizontalAngle(index);
+		turnGyro = new TurnWithGyro(HorizontalAngle);
+		turnGyro.start();
 	}
 
 	@Override
@@ -25,7 +34,7 @@ public class SpinUpShooter extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return !turnGyro.isRunning();
 	}
 
 	@Override
@@ -37,7 +46,9 @@ public class SpinUpShooter extends Command {
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		
+		if (turnGyro.isRunning()) {
+			turnGyro.cancel();
+		}
 	}
 
 }

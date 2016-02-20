@@ -16,11 +16,11 @@ public class AimBots extends CommandGroup{
 		index = Robot.cameraSubsystem.GetBiggestAreaIndex();
 		
 		addParallel(new HorizontalAim(index));
-		andParallel(new VerticalAim(index));
+		addParallel(new VerticalAim(index));
 		addSequential(new HorizontalAim(index));
 		addSequential(new VerticalAim(index));
 		if (Shoot){
-			addSequential(new SpinupShooter());
+			addSequential(new SpinUpShooter());
 			addSequential(new Shoot());
 		}
 		

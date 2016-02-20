@@ -24,7 +24,7 @@ public class Auto extends Command {
 	}
 
 	protected void execute() {
-        TurnWithGyro.RobotTurn();
+      //  TurnWithGyro.RobotTurn();
 		// Robot.driveSubsystem.arcadeDrive(0.5, 0);
 
 		// Robot.gyroSubsystem.GyroPostion();
@@ -42,7 +42,7 @@ public class Auto extends Command {
 		leftSpeed = 0.5;
 		rightSpeed = 0.5;
 		Robot.gyroSubsystem.gyro.calibrate();
-		TurnWithGyro.setTargetAngle(-90);
+//		TurnWithGyro.setTargetAngle(-90);
 
 		// Robot.driveSubsystem.arcadeDrive(0,autoForwardSpeed);
 
@@ -64,11 +64,12 @@ public class Auto extends Command {
 	}
 
 	protected boolean isFinished() {
-		if (TurnWithGyro.getTargetAngle() % 90 >= 90) {
-			return true;
-		} else {
-			return false;
-		}
+//		if (TurnWithGyro.getTargetAngle() % 90 >= 90) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+		return false;
 	}
 
 }
