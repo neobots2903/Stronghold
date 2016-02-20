@@ -64,10 +64,10 @@ public class CameraVision2903 extends Subsystem {
 		
 		
 		
-		HorizontalAngle = atan(GetOffsetX(index/460);
+		HorizontalAngle = java.lang.Math.atan(GetOffsetX(index/46));
 		
 		
-		return 
+		return HorizontalAngle;
 	}
 
 

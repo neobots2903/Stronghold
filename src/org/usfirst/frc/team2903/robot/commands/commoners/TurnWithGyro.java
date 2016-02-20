@@ -16,7 +16,7 @@ import org.usfirst.frc.team2903.robot.*;
  */
 public class TurnWithGyro extends Command{
 
-	static double TargetAngle = 0;
+	double TargetAngle = 0;
 
 	enum TurnDirection {
 		Left, Right
@@ -25,22 +25,16 @@ public class TurnWithGyro extends Command{
 	static TurnDirection turnDirection;
 
 	public TurnWithGyro(int targetangle) {
-		double gyroAngle = Robot.gyroSubsystem.gyro.getAngle() % 360;
+		TargetAngle = targetangle;
 		
-		if (gyroAngle != TargetAngle) {
-			if (TargetAngle < 0 && gyroAngle > TargetAngle)
-				Robot.driveSubsystem.tankDrive(-0.5, -0.5);
-			else if (TargetAngle >= 0 && gyroAngle < TargetAngle)
-				Robot.driveSubsystem.tankDrive(0.5, 0.5);
-		}	
 
 	}
 
-	public static double getTargetAngle() {
+	public  double getTargetAngle() {
 		return TargetAngle;
 	}
 
-	public static void setTargetAngle(double targetAngle) {
+	public void setTargetAngle(double targetAngle) {
 		TargetAngle = targetAngle;
 		// adjust angle down to one circle
 		TargetAngle = TargetAngle % 360;
@@ -57,19 +51,45 @@ public class TurnWithGyro extends Command{
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
+//		Robot.gyroSubsystem.gyro.reset();
 	}
 
 	@Override
 	protected void execute() {
+		double gyroAngle = Robot.gyroSubsystem.gyro.getAngle() % 360;
+		boolean turnLeft = false;
+		
 		// TODO Auto-generated method stub
+		if (TargetAngle < 0) {
+			if (gyroAngle > TargetAngle)
+				turnLeft = true;
+			if (gyroAngle < TargetAngle)
+				turnLeft = false;
+		}
+		else{
+			if (gyroAngle > TargetAngle)
+				turnLeft = false;
+			if (gyroAngle < TargetAngle)
+				turnLeft = true;
+			
+		}
+			
+		if (!turnLeft)
+			Robot.driveSubsystem.tankDrive(-0.5, -0.5);
+		else 
+			Robot.driveSubsystem.tankDrive(0.5, 0.5);
 		
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		double gyroAngle = Robot.gyroSubsystem.gyro.getAngle() % 360;
+		
+		if (gyroAngle >= (TargetAngle - 0.1) && gyroAngle <= (TargetAngle + 0.1) ) 
+			return true;
+		else
+			return false;
 	}
 
 	@Override

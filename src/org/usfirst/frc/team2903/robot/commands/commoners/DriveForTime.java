@@ -8,22 +8,26 @@ public  class DriveForTime extends Command{
 	double TimeForDistance;
 	double timeInSeconds;
 	Timer timer = new Timer();
+	
 	public DriveForTime(double timeInSeconds){
 		super("DriveForTime");
 		requires(Robot.driveSubsystem);
-		TimeForDistance =timer.get();
+
+		this.timeInSeconds = timeInSeconds;
 	}
 	
 	protected void initialize(){
 		//TODO Auto-generated method stub
 		timer.reset();
 		timer.start();
+		TimeForDistance =timer.get();
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.driveSubsystem.arcadeDrive(.5, 0);
+		Robot.driveSubsystem.tankDrive(0.5, -0.5);
+		TimeForDistance = timer.get();
 	}
 	
 	@Override
@@ -31,8 +35,8 @@ public  class DriveForTime extends Command{
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 
-		if(TimeForDistance == timeInSeconds){
-			
+		if(TimeForDistance >= timeInSeconds){
+			return true;
 		}
 		return false;
 	}
