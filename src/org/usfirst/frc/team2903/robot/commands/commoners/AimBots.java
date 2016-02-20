@@ -2,13 +2,29 @@ package org.usfirst.frc.team2903.robot.commands.commoners;
 
 import org.usfirst.frc.team2903.robot.Robot;
 
-public class AimBots {
+import edu.wpi.first.wpilibj.command.CommandGroup;
+
+public class AimBots extends CommandGroup{
+	int index;
 
 	//We need to convert pixels to motor movements
 	//To add a note i can change the size of the image. Currently its 400 to 280
 	
-	public void Aim() {
-		int index = 0;
+	public AimBots(boolean Shoot) {
+		
+		super("AimBots");
+		index = Robot.cameraSubsystem.GetBiggestAreaIndex();
+		
+		addParallel(new HorizontalAim(index));
+		andParallel(new VerticalAim(index));
+		addSequential(new HorizontalAim(index));
+		addSequential(new VerticalAim(index));
+		if (Shoot){
+			addSequential(new SpinupShooter());
+			addSequential(new Shoot());
+		}
+		
+		/**int index = 0;
 
 		index = Robot.cameraSubsystem.GetBiggestAreaIndex();
 		
@@ -30,6 +46,6 @@ public class AimBots {
 		  
 		if (offsetX > -5 && offsetX < 5 && offsetBound > -5 && offsetBound < 5) {
 			// FIRE THE CANNONS!!!
-		}
+		}**/
 	}
 }

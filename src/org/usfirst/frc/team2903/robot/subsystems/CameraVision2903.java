@@ -18,7 +18,6 @@ public class CameraVision2903 extends Subsystem {
 	double[] widths;
 	double[] boundingTop;
 
-
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
@@ -44,32 +43,26 @@ public class CameraVision2903 extends Subsystem {
 		heights = table.getNumberArray("height", defaultValue);
 		widths = table.getNumberArray("width", defaultValue);
 
-		}
+	}
 
 	public double GetOffsetX(int index) {
-		
+
 		double[] offsetX;
-		
+
 		offsetX = centerXs.clone();
 		int y = offsetX.length;
 		for (int i = 0; i < y; i++) {
-			offsetX[i] -= 200;
+			offsetX[i] -= 320;
 		}
 		return offsetX[index];
 	}
-	
-	public double GetHorizontalAngle(int index){
-		
-		double HorizontalAngle = GetOffsetX(index);
-		
-		
-		
-		HorizontalAngle = atan(GetOffsetX(index/460);
-		
-		
-		return 
-	}
 
+	public double GetHorizontalAngle(int index) {
+
+		double HorizontalAngle = java.lang.Math.atan(GetOffsetX(index / 460));
+
+		return HorizontalAngle;
+	}
 
 	public double GetOffsetBounding(int index) {
 
@@ -78,9 +71,16 @@ public class CameraVision2903 extends Subsystem {
 
 		int z = offsetBounding.length;
 		for (int i = 0; i < z; i++) {
-			offsetBounding[i] -= 140;
+			offsetBounding[i] -= 240;
 		}
 		return offsetBounding[index];
+	}
+
+	public double GetVerticleAngle(int index) {
+
+		double VerticleAngle = java.lang.Math.atan(GetOffsetBounding(index / 460));
+
+		return VerticleAngle;
 	}
 
 	public void displayCameraValues() {
@@ -126,9 +126,9 @@ public class CameraVision2903 extends Subsystem {
 	public int GetBiggestAreaIndex() {
 		double biggest = 0;
 		int index = 0;
-		
+
 		GetImageTable();
-		
+
 		for (int i = 0; i < areas.length; i++) {
 			if (areas[i] > biggest) {
 				biggest = areas[i];
@@ -136,7 +136,7 @@ public class CameraVision2903 extends Subsystem {
 			}
 		}
 		return index;
-		
-	}	
-	
+
+	}
+
 }
