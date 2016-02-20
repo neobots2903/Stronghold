@@ -7,8 +7,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DriveInAOneSecondSquare extends CommandGroup {
 
 	public DriveInAOneSecondSquare(){
-		
 		addSequential(new DriveForTime(1));
 		addSequential(new TurnWithGyro(90));
+		addSequential(new DriveForTime(1));
+		addSequential(new TurnWithGyro(180));
+		addSequential(new DriveForTime(1));
+		addSequential(new TurnWithGyro(270));		
+		addSequential(new DriveForTime(1));
+		addSequential(new TurnWithGyro(360));
+
 	}
+	
 }
