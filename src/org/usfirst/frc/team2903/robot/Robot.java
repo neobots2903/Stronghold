@@ -9,11 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2903.robot.commands.Auto;
 import org.usfirst.frc.team2903.robot.commands.Teleop;
-<<<<<<< HEAD
 import org.usfirst.frc.team2903.robot.subsystems.CameraVision2903;
-=======
 import org.usfirst.frc.team2903.robot.subsystems.Arm2903;
->>>>>>> 7d71825b1489e2e82c096a3e06b175c91001a69f
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
 
 import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;

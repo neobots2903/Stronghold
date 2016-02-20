@@ -36,7 +36,7 @@ public class Arm2903 extends Subsystem {
 
 	public Arm2903() {
 
-		ArmMotor = new CANTalon(RobotMap.ArmMotor);
+		ArmMotor = new CANTalon(RobotMap.armMotor);
 
 		pot = new AnalogPotentiometer(1, 100, 0);
 
@@ -105,7 +105,7 @@ public class Arm2903 extends Subsystem {
 
 	// Returns a boolean as to whether the target angle has been reached
 	// returns true of the angle is between target-2 and target.
-	// returns false if tarnet not in range, if not calibrated, or if
+	// returns false if target not in range, if not calibrated, or if
 	// target angle has not been reached.
 	public boolean isTargetReached() {
 
