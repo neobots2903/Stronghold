@@ -3,38 +3,54 @@
  */
 package org.usfirst.frc.team2903.robot.commands.commoners;
 
-import org.usfirst.frc.team2903.robot.*;
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
 import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
+import org.usfirst.frc.team2903.robot.*;
 
 /**
  * @author robotics
  *
  */
 public class TurnWithGyro {
-	public void GyroPID(Drive2903 driveSubsystem, Gyro2903 gyroSubsystem) {
-		double targetAngle = 0;
-		double gyroAngle = gyroSubsystem.gyro.getAngle();
 
-		double leftSpeed;
-		double rightSpeed;
+	static double TargetAngle = 0;
 
-		// requires(Robot.driveSubsystem);
+	enum TurnDirection {
+		Left, Right
+	}
 
-		if (gyroAngle != targetAngle) {
-			if (gyroAngle > 180 - targetAngle) {
-				leftSpeed = 0.5;
-				rightSpeed = -0.5;
-				driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+	static TurnDirection turnDirection;
 
-			}
-			if (gyroAngle < 180 - targetAngle) {
-				leftSpeed = -0.5;
-				rightSpeed = 0.5;
-				driveSubsystem.tankDrive(leftSpeed, rightSpeed);
+	public static void RobotTurn() {
+		double gyroAngle = Robot.gyroSubsystem.gyro.getAngle() % 360;
 
-			}
-		}
+		double TurnSpeed;
+
+		if (gyroAngle != TargetAngle) {
+			if (TargetAngle < 0 && gyroAngle > TargetAngle)
+				Robot.driveSubsystem.tankDrive(-0.5, -0.5);
+			else if (TargetAngle >= 0 && gyroAngle < TargetAngle)
+				Robot.driveSubsystem.tankDrive(0.5, 0.5);
+		}	
 
 	}
+
+	public static double getTargetAngle() {
+		return TargetAngle;
+	}
+
+	public static void setTargetAngle(double targetAngle) {
+		TargetAngle = targetAngle;
+		// adjust angle down to one circle
+		TargetAngle = TargetAngle % 360;
+		if (TargetAngle < 180) {
+			turnDirection = TurnDirection.Right;
+		}
+
+		else {
+			TargetAngle -= 360;
+			turnDirection = TurnDirection.Left;
+		}
+	}
+
 }

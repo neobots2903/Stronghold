@@ -9,7 +9,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2903.robot.commands.Auto;
 import org.usfirst.frc.team2903.robot.commands.Teleop;
+<<<<<<< HEAD
 import org.usfirst.frc.team2903.robot.subsystems.CameraVision2903;
+=======
+import org.usfirst.frc.team2903.robot.subsystems.Arm2903;
+>>>>>>> 7d71825b1489e2e82c096a3e06b175c91001a69f
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
 
 import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
@@ -26,15 +30,16 @@ public class Robot extends IterativeRobot {
 
 	public static Drive2903 driveSubsystem;
 //	public static Shooter2903 shooterSubsystem;
-	// public static final Pneumatics pneumaticsSubsystem = new Pneumatics();
-	// public static OI oi;
 	public static Gyro2903 gyroSubsystem;
+	public static Arm2903 armSubsystem;
+	
 	Command autonomousCommand;
 	Command teleopCommand;
 	public static CameraVision2903 cameraSubsystem   ;
 
 	public static Joystick joyOp = new Joystick(1);
 	public static Joystick joy1 = new Joystick(0);
+
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -48,7 +53,8 @@ public class Robot extends IterativeRobot {
 		cameraSubsystem = new CameraVision2903();
 		
 //		shooterSubsystem = new Shooter2903();
-		//autonomousCommand = new Auto();
+		armSubsystem = new Arm2903();
+		autonomousCommand = new Auto();
 
 		teleopCommand = new Teleop();
 		// CameraServer server = CameraServer.getInstance();
