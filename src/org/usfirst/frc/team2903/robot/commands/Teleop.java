@@ -37,10 +37,10 @@ public class Teleop extends Command {
 		 * turn in opposite directions inward on release they stop
 		 */
 		
-		if (Robot.joyOp.getPOV() == 0)
+		if (Robot.joy1.getPOV() == 0)
 			//raise arm 
 			Robot.armSubsystem.raiseArm();
-		else if (Robot.joyOp.getPOV() == 4)
+		else if (Robot.joy1.getPOV() == 4)
 			//lower arm
 			Robot.armSubsystem.lowerArm();
 		else 

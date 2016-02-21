@@ -46,7 +46,7 @@ public class Arm2903 extends Subsystem {
 		ArmResetAngle = 0;
 		AngleError = 2;
 		MaxArmAngle = 100;
-		ArmMotorSpeed = 0.1;
+		ArmMotorSpeed = 0.5;
 	}
 
 	// resets the arm to the calibrated angle
@@ -138,7 +138,7 @@ public class Arm2903 extends Subsystem {
 	public void raiseArm() {
 
 		if (pot.get() < MaxArmAngle) {
-			ArmMotor.set(ArmMotorSpeed);
+			ArmMotor.set(ArmMotorSpeed*-1);
 		}
 		else
 			stopArm();
@@ -148,7 +148,7 @@ public class Arm2903 extends Subsystem {
 	// angle
 	public void lowerArm() {
 		if (pot.get() > ArmResetAngle) {
-			ArmMotor.set(ArmMotorSpeed * -1.0);
+			ArmMotor.set(ArmMotorSpeed);
 		}
 		else{
 			stopArm();

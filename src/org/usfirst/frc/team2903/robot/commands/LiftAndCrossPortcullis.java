@@ -22,5 +22,5 @@ public class LiftAndCrossPortcullis extends CommandGroup {
 			addSequential(new Shoot());
 		}
 	}
-
+        
 }
