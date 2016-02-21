@@ -1,6 +1,10 @@
-package org.usfirst.frc.team2903.robot.commands.commoners;
+package org.usfirst.frc.team2903.robot.commands.groups;
 
 import org.usfirst.frc.team2903.robot.Robot;
+import org.usfirst.frc.team2903.robot.commands.commoners.HorizontalAim;
+import org.usfirst.frc.team2903.robot.commands.commoners.Shoot;
+import org.usfirst.frc.team2903.robot.commands.commoners.SpinUpShooter;
+import org.usfirst.frc.team2903.robot.commands.commoners.VerticalAim;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
