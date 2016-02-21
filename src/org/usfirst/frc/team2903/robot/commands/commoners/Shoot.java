@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2903.robot.commands.commoners;
 
+import org.usfirst.frc.team2903.robot.Robot;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Shoot extends Command {
@@ -12,7 +15,10 @@ public class Shoot extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-
+		requires(Robot.shooterSubsystem);
+		Robot.shooterSubsystem.KickerSpeed(0.4);
+		Timer.delay(0.5);
+		Robot.shooterSubsystem.KickerSpeed(-0.4);
 	}
 
 	@Override

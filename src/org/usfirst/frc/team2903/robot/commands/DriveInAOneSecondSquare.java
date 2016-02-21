@@ -23,9 +23,9 @@ public class DriveInAOneSecondSquare extends CommandGroup {
 		addSequential(new DriveForTime(1));
 		addSequential(turnCmd180);
 		addSequential(new DriveForTime(1));
-//		addSequential(new TurnWithGyro(90));		
-//		addSequential(new DriveForTime(1));
-//		addSequential(new TurnWithGyro(90));
+		addSequential(turnCmd270);		
+		addSequential(new DriveForTime(1));
+		addSequential(turnCmd360);
 
 	}
 	

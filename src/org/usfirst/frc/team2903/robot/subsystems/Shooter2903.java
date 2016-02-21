@@ -45,7 +45,7 @@ public class Shooter2903 extends Subsystem {
 	static int rightRawCount;
 	static CANTalon rightShooter;
 	static CANTalon leftShooter;
-
+	static CANTalon KickingMotor;
 	// encoder for shooter motors
 	static Encoder shooterLeftSpeedEncoder;
 	static Encoder shooterRightSpeedEncoder;
@@ -54,9 +54,10 @@ public class Shooter2903 extends Subsystem {
 		// instantiate the talon motor controllers
 		rightShooter = new CANTalon(RobotMap.RightShooter);
 		leftShooter = new CANTalon(RobotMap.LeftShooter);
+		KickingMotor = new CANTalon(RobotMap.KickingMotor);
 		leftShooter.enable();
 		rightShooter.enable();
-
+		KickingMotor.enable();
 		// instantiate the encoder
 		shooterLeftSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 		shooterRightSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
@@ -182,6 +183,10 @@ public class Shooter2903 extends Subsystem {
 				SmartDashboard.getString("Error with RIGHT SHOOTER");
 			}
 		}
+	}
+	
+	public void KickerSpeed(double KickerSpeed){
+		KickingMotor.set(KickerSpeed);
 	}
 
 	// The arms raise and lower the shooter....

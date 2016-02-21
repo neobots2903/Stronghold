@@ -14,8 +14,8 @@ public class RobotMap {
 	public static int LeftBottomMotor = 33;
 	public static int RightBottomMotor = 32;
 
-	public static int RightShooter = 20;
-	public static int LeftShooter = 21;
+	public static int RightShooter = 36;
+	public static int LeftShooter = 34;
 
 	public static int armMotor = 14;
 

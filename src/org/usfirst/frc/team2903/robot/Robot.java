@@ -27,7 +27,7 @@ import org.usfirst.frc.team2903.robot.subsystems.Shooter2903;
 public class Robot extends IterativeRobot {
 
 	public static Drive2903 driveSubsystem;
-//	public static Shooter2903 shooterSubsystem;
+	public static Shooter2903 shooterSubsystem;
 	public static Gyro2903 gyroSubsystem;
 	public static Arm2903 armSubsystem;
 	
@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
 		gyroSubsystem = new Gyro2903();
 		cameraSubsystem = new CameraVision2903();
 		
-//		shooterSubsystem = new Shooter2903();
+		shooterSubsystem = new Shooter2903();
 		armSubsystem = new Arm2903();
 		autonomousCommand = new DriveInAOneSecondSquare();
 
