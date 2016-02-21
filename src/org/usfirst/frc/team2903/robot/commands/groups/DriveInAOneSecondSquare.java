@@ -13,19 +13,14 @@ public class DriveInAOneSecondSquare extends CommandGroup {
 
 		Robot.gyroSubsystem.Calibrate();
 
-		TurnWithGyro turnCmd90 = new TurnWithGyro(90); 
-		TurnWithGyro turnCmd180 = new TurnWithGyro(180); 
-		TurnWithGyro turnCmd270 = new TurnWithGyro(270); 
-		TurnWithGyro turnCmd360 = new TurnWithGyro(360); 
-		
 		addSequential(new DriveForTime(1));
-		addSequential(turnCmd90);
+		addSequential(new TurnWithGyro(90));
 		addSequential(new DriveForTime(1));
-		addSequential(turnCmd180);
+		addSequential(new TurnWithGyro(180));
 		addSequential(new DriveForTime(1));
-		addSequential(turnCmd270);		
+		addSequential(new TurnWithGyro(270));		
 		addSequential(new DriveForTime(1));
-		addSequential(turnCmd360);
+		addSequential(new TurnWithGyro(360));
 
 	}
 	
