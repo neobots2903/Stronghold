@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2903.robot.commands;
+package org.usfirst.frc.team2903.robot.commands.groups;
 
 import org.usfirst.frc.team2903.robot.commands.commoners.AimShooter;
 import org.usfirst.frc.team2903.robot.commands.commoners.DriveForward;

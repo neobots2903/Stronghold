@@ -14,7 +14,7 @@ import org.usfirst.frc.team2903.robot.subsystems.Gyro2903;
 public class DriveStraightWithGyro {
 	public static void GyroPID(Drive2903 driveSubsystem, Gyro2903 gyroSubsystem) {
 		double targetAngle = 0;
-		double gyroAngle = gyroSubsystem.gyro.getAngle() % 360;
+		double gyroAngle = gyroSubsystem.GyroPosition() % 360;
 
 		double leftSpeed;
 		double rightSpeed;

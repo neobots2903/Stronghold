@@ -9,22 +9,26 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Gyro2903 extends Subsystem {
 	
-	public Gyro gyro;
+	Gyro gyro;
+	double gyroAngle;
 
 	public Gyro2903() {
 			gyro = new AnalogGyro(RobotMap.Gyro);
 			gyro.calibrate();
 	}
 	
-	public void GyroPostion() {
-		
-		double gyroAngle;
-		
+	public double GyroPosition() {
+
 		gyro.reset();
 		gyroAngle = gyro.getAngle();
 		SmartDashboard.putNumber("gyroAngle", gyroAngle);
+		return gyroAngle;
 	}
 	
+	public void Calibrate()
+	{
+		gyro.calibrate();
+	}
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub

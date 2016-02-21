@@ -10,35 +10,35 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drive2903 extends Subsystem {
 
-	static int RightCount;
+	int RightCount;
 
-	public static int rightGetCount() {
+	public int rightGetCount() {
 		if (driveSpeedEncoder != null)
 			return RightCount = driveSpeedEncoder.get();
 		else
 			return 0;
 	}
 
-	static int RightRawCount;
+	int RightRawCount;
 
-	public static int rightGetRawcount() {
+	public int rightGetRawcount() {
 		if (driveSpeedEncoder != null)
 			return RightRawCount = driveSpeedEncoder.getRaw();
 		else
 			return 0;
 	}
-	static int LeftCount;
+	int LeftCount;
 
-	public static int leftGetCount() {
+	public int leftGetCount() {
 		if (driveSpeedEncoder != null)
 			return LeftCount = driveSpeedEncoder.get();
 		else
 			return 0;
 	}
 
-	static int LeftRawCount;
+	int LeftRawCount;
 
-	public static int leftGetRawcount() {
+	public int leftGetRawcount() {
 		if (driveSpeedEncoder != null)
 			return LeftRawCount = driveSpeedEncoder.getRaw();
 		else
@@ -52,8 +52,8 @@ public class Drive2903 extends Subsystem {
 	CANTalon rightRearMotor;
 
 	// here is the encoder
-	public static Encoder leftDriveSpeedEncoder;
-	public static Encoder driveSpeedEncoder;
+	Encoder leftDriveSpeedEncoder;
+	Encoder driveSpeedEncoder;
 	public enum DriveType {
 		ArcadeMode1Joystick,
 		// ArcadeMode2Joystick,

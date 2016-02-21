@@ -41,7 +41,7 @@ public class Auto extends Command {
 		double rightSpeed;
 		leftSpeed = 0.5;
 		rightSpeed = 0.5;
-		Robot.gyroSubsystem.gyro.calibrate();
+		Robot.gyroSubsystem.Calibrate();
 //		TurnWithGyro.setTargetAngle(-90);
 
 		// Robot.driveSubsystem.arcadeDrive(0,autoForwardSpeed);

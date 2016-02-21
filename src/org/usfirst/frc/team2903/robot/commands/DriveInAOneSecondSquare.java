@@ -11,7 +11,7 @@ public class DriveInAOneSecondSquare extends CommandGroup {
 		requires(Robot.driveSubsystem);
 		requires(Robot.gyroSubsystem);
 
-		Robot.gyroSubsystem.gyro.calibrate();
+		Robot.gyroSubsystem.Calibrate();
 
 		TurnWithGyro turnCmd90 = new TurnWithGyro(90); 
 		TurnWithGyro turnCmd180 = new TurnWithGyro(180); 
