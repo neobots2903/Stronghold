@@ -46,7 +46,7 @@ public class Arm2903 extends Subsystem {
 		ArmResetAngle = 0;
 		AngleError = 2;
 		MaxArmAngle = 100;
-		ArmMotorSpeed = 0.5;
+		ArmMotorSpeed = 0.75;
 	}
 
 	// resets the arm to the calibrated angle
