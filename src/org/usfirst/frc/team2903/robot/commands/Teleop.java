@@ -1,7 +1,10 @@
 package org.usfirst.frc.team2903.robot.commands;
 
 import org.usfirst.frc.team2903.robot.Robot;
+import org.usfirst.frc.team2903.robot.RobotMap;
 import org.usfirst.frc.team2903.robot.subsystems.Drive2903;
+
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,7 +29,7 @@ public class Teleop extends Command {
 											// is forward
 		//double turn = Robot.joy1.getZ()/1.5; // logitech X, positive
 		// means turn right
-		double turn = Robot.joy1.getX(); // logitech X, positive
+		double turn = Robot.joy1.getZ(); // logitech X, positive
 											// means turn right
 
 
@@ -52,11 +55,31 @@ public class Teleop extends Command {
 			
 		
 
-		// if(Robot.joyOp.getRawButton(1))
-		// //activate kicker
-		// ;
+//		if (Robot.joy1.getRawButton(3)){
+//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+//			
+//			leftShoot.set(1.0);
+//			rightShoot.set(-1.0);
+//		}
+//		
+//	
+//		else if (Robot.joy1.getRawButton(4)){
+//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+//			
+//			leftShoot.set(-0.65);
+//			rightShoot.set(0.65);
+//		}
+//		
+//		else{
+//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+//			
+//			leftShoot.set(0);
+//			rightShoot.set(0);
+//		}
 
-		
 		
 			
 			}

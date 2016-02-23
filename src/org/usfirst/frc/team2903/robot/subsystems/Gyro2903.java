@@ -34,4 +34,9 @@ public class Gyro2903 extends Subsystem {
 		// TODO Auto-generated method stub
 
 	}
+
+	public void reset() {
+		gyro.reset();
+		
+	}
 }

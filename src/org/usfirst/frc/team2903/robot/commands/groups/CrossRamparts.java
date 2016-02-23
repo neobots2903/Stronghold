@@ -10,7 +10,8 @@ public class CrossRamparts extends Command {
 	public CrossRamparts(boolean shoot){
 		super("CrossRamparts");
 		
-		addSequential(new DriveForward(1));	}
+		//addSequential(new DriveForward(1));	
+		}
 
 	@Override
 	protected void initialize() {

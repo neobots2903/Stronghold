@@ -16,7 +16,7 @@ import org.usfirst.frc.team2903.robot.*;
  */
 public class TurnWithGyro extends Command{
 
-	static double TargetAngle = 0;
+	double TargetAngle = 0;
 
 	enum TurnDirection {
 		Left, Right
@@ -25,22 +25,15 @@ public class TurnWithGyro extends Command{
 	static TurnDirection turnDirection;
 
 	public TurnWithGyro(double horizontalAngle) {
-		double gyroAngle = Robot.gyroSubsystem.GyroPosition() % 360;
-		
-		if (gyroAngle != TargetAngle) {
-			if (TargetAngle < 0 && gyroAngle > TargetAngle)
-				Robot.driveSubsystem.tankDrive(-0.5, -0.5);
-			else if (TargetAngle >= 0 && gyroAngle < TargetAngle)
-				Robot.driveSubsystem.tankDrive(0.5, 0.5);
-		}	
+		TargetAngle = horizontalAngle;
 
 	}
 
-	public static double getTargetAngle() {
+	public double getTargetAngle() {
 		return TargetAngle;
 	}
 
-	public static void setTargetAngle(double targetAngle) {
+	public void setTargetAngle(double targetAngle) {
 		TargetAngle = targetAngle;
 		// adjust angle down to one circle
 		TargetAngle = TargetAngle % 360;
@@ -57,18 +50,32 @@ public class TurnWithGyro extends Command{
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
+		Robot.gyroSubsystem.Calibrate();
+		Robot.gyroSubsystem.reset();
 		
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
 		
+
+		double gyroAngle = Robot.gyroSubsystem.GyroPosition() % 360;
+		
+		if (TargetAngle < 0 && (gyroAngle < TargetAngle - 0.1 || gyroAngle > TargetAngle + 0.1))
+			Robot.driveSubsystem.tankDrive(-0.5, -0.5);
+		else if (TargetAngle >= 0 && (gyroAngle < TargetAngle - 0.1 || gyroAngle > TargetAngle + 0.1))
+			Robot.driveSubsystem.tankDrive(0.5, 0.5);
+	
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
+		double gyroAngle = Robot.gyroSubsystem.GyroPosition() % 360;
+		
+		if (gyroAngle >= TargetAngle - 0.1 && 
+			gyroAngle <= TargetAngle + 0.1) {
+			return true;
+		}	
 		return false;
 	}
 
