@@ -16,9 +16,9 @@ public class Shoot extends Command {
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		requires(Robot.shooterSubsystem);
-		Robot.shooterSubsystem.KickerSpeed(0.4);
+		Robot.shooterSubsystem.Kick(0.4);
 		Timer.delay(0.5);
-		Robot.shooterSubsystem.KickerSpeed(-0.4);
+		Robot.shooterSubsystem.Kick(-0.4);
 	}
 
 	@Override

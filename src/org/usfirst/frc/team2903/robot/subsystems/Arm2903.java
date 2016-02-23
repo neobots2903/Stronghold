@@ -5,6 +5,7 @@ import org.usfirst.frc.team2903.robot.RobotMap;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
 //import edu.wpi.first.wpilibj.
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
@@ -15,7 +16,16 @@ public class Arm2903 extends Subsystem {
 	boolean IsReset;
 	boolean IsCalibrated;
 	boolean IsTargetAngleSet;
+	
+	// LimitSwitches
+	//public DigitalInput bottomLimit = new DigitalInput(RobotMap.botLimitSwitch);
+	//public DigitalInput topLimit = new DigitalInput(RobotMap.botLimitSwitch);
 
+	// LimitSwitches' Booleans
+	//boolean reachedBottomLimit = false;
+	//boolean reachedTopLimit = false;
+	
+	
 	Potentiometer pot;
 
 	double AngleError;
@@ -136,7 +146,10 @@ public class Arm2903 extends Subsystem {
 	// this raises the arm, but limits the movement to no further than the
 	// maximum angle
 	public void raiseArm() {
-
+		
+		//if(reachedTopLimit = true){
+		//	stopArm();
+		//}
 		if (pot.get() < MaxArmAngle) {
 			ArmMotor.set(ArmMotorSpeed*-1);
 		}
@@ -147,6 +160,9 @@ public class Arm2903 extends Subsystem {
 	// this lowers the arm, but limits the movement to no further than the reset
 	// angle
 	public void lowerArm() {
+		//if(reachedBottomLimit = true){
+		//	stopArm();
+		//}
 		if (pot.get() > ArmResetAngle) {
 			ArmMotor.set(ArmMotorSpeed);
 		}
@@ -155,7 +171,7 @@ public class Arm2903 extends Subsystem {
 		}
 	}
 
-	// this stops the arm from moving.
+	 //this stops the arm from moving.
 	public void stopArm() {
 		// TODO Auto-generated method stub
 		ArmMotor.set(0);

@@ -18,6 +18,10 @@ public class RobotMap {
 	public static int LeftShooter = 37;
 
 	public static int armMotor = 34;
+	
+	//Limit Switches
+	public static int botLimitSwitch = 4;//port subjected to change
+    public static int topLimitSwitch = 5;//port subjected to change
 
 	// PWM
 

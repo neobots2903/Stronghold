@@ -3,11 +3,20 @@ package org.usfirst.frc.team2903.robot.subsystems;
 import org.usfirst.frc.team2903.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter2903 extends Subsystem {
+
+	// LimitSwitches
+	public DigitalInput bottomLimit = new DigitalInput(RobotMap.botLimitSwitch);
+	public DigitalInput upperLimit = new DigitalInput(RobotMap.topLimitSwitch);
+
+	// LimitSwitches' Booleans
+	boolean bottomLimitAct = bottomLimit.get();
+	boolean topLimitAct = upperLimit.get();
 
 	static double leftHighForward;
 	static double leftLowForward;
@@ -17,6 +26,7 @@ public class Shooter2903 extends Subsystem {
 	static double rightReverse;
 	static int leftCount;
 	static int rightCount;
+
 	public static int getLeftCount() {
 		if (shooterLeftSpeedEncoder != null)
 			return leftCount = shooterLeftSpeedEncoder.get();
@@ -28,7 +38,7 @@ public class Shooter2903 extends Subsystem {
 	public static int getLeftRawCount() {
 		return leftRawCount;
 	}
-	
+
 	public static int getRightCount() {
 		if (shooterRightSpeedEncoder != null)
 			return rightCount = shooterRightSpeedEncoder.get();
@@ -40,7 +50,7 @@ public class Shooter2903 extends Subsystem {
 	public static int getRightRawCount() {
 		return rightRawCount;
 	}
-	
+
 	static int leftRawCount;
 	static int rightRawCount;
 	static CANTalon rightShooter;
@@ -49,7 +59,7 @@ public class Shooter2903 extends Subsystem {
 	// encoder for shooter motors
 	static Encoder shooterLeftSpeedEncoder;
 	static Encoder shooterRightSpeedEncoder;
-	
+
 	public Shooter2903() {
 		// instantiate the talon motor controllers
 		rightShooter = new CANTalon(RobotMap.RightShooter);
@@ -61,7 +71,7 @@ public class Shooter2903 extends Subsystem {
 		// instantiate the encoder
 		shooterLeftSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 		shooterRightSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-		
+
 		// initialize class data
 		// TODO: Make these numbers constants -- see the values in RobotMap.java
 		leftHighForward = 1.0;
@@ -96,19 +106,19 @@ public class Shooter2903 extends Subsystem {
 		SmartDashboard.putNumber("leftRawCount", getLeftRawCount());
 		SmartDashboard.putNumber("rightCount", getRightCount());
 		SmartDashboard.putNumber("rightRawCount", getRightRawCount());
-		//if statements to balance the motors
-		if(getLeftCount() != getRightCount()){
-			if(getLeftCount() < getRightCount()){
+		// if statements to balance the motors
+		if (getLeftCount() != getRightCount()) {
+			if (getLeftCount() < getRightCount()) {
 				rightHighForward = rightHighForward - 0.1;
 			}
-			if(getLeftCount() > getRightCount()){
+			if (getLeftCount() > getRightCount()) {
 				leftHighForward = leftHighForward - 0.1;
 			}
 		}
-		if (rightHighForward < 0.8){
+		if (rightHighForward < 0.8) {
 			rightHighForward = 1.0;
 		}
-		if(leftHighForward < 0.8){
+		if (leftHighForward < 0.8) {
 			leftHighForward = 1.0;
 		}
 	}
@@ -125,18 +135,18 @@ public class Shooter2903 extends Subsystem {
 		SmartDashboard.putNumber("leftRawCount", getLeftRawCount());
 		SmartDashboard.putNumber("rightCount", getRightCount());
 		SmartDashboard.putNumber("rightRawCount", getRightRawCount());
-		if(getLeftCount() != getRightCount()){
-			if(getLeftCount() < getRightCount()){
+		if (getLeftCount() != getRightCount()) {
+			if (getLeftCount() < getRightCount()) {
 				rightHighForward = rightHighForward + 0.1;
 			}
-			if(getLeftCount() > getRightCount()){
+			if (getLeftCount() > getRightCount()) {
 				leftHighForward = leftHighForward + 0.1;
 			}
 		}
-		if (rightHighForward > 0.){
+		if (rightHighForward > 0.) {
 			rightHighForward = .0;
 		}
-		if(leftHighForward > 0.){
+		if (leftHighForward > 0.) {
 			leftHighForward = .0;
 		}
 	}
@@ -144,7 +154,7 @@ public class Shooter2903 extends Subsystem {
 	public void enablePickupMode() {
 		shooterLeftSpeedEncoder.reset();
 		shooterRightSpeedEncoder.reset();
-		
+
 		leftShooter.set(leftReverse * -1.0);
 		rightShooter.set(rightReverse);
 
@@ -153,18 +163,18 @@ public class Shooter2903 extends Subsystem {
 		SmartDashboard.putNumber("leftRawCount", getLeftRawCount());
 		SmartDashboard.putNumber("rightCount", getRightCount());
 		SmartDashboard.putNumber("rightRawCount", getRightRawCount());
-		if(getLeftCount() != getRightCount()){
-			if(getLeftCount() < getRightCount()){
+		if (getLeftCount() != getRightCount()) {
+			if (getLeftCount() < getRightCount()) {
 				rightHighForward = rightHighForward + 0.1;
 			}
-			if(getLeftCount() > getRightCount()){
+			if (getLeftCount() > getRightCount()) {
 				leftHighForward = leftHighForward + 0.1;
 			}
 		}
-		if (rightHighForward > 0.5){
+		if (rightHighForward > 0.5) {
 			rightHighForward = 0.25;
 		}
-		if(leftHighForward > 0.5){
+		if (leftHighForward > 0.5) {
 			leftHighForward = 0.25;
 		}
 	}
@@ -172,21 +182,33 @@ public class Shooter2903 extends Subsystem {
 	public void disableShooter() {
 		shooterLeftSpeedEncoder.reset();
 		shooterRightSpeedEncoder.reset();
-		
+
 		leftShooter.set(0);
 		rightShooter.set(0);
-		if(getLeftCount() != getRightCount()){
-			if(getLeftCount() != 0 ){
+		if (getLeftCount() != getRightCount()) {
+			if (getLeftCount() != 0) {
 				SmartDashboard.getString("Error with LEFT SHOOTER");
 			}
-			if(getRightCount() != 0 ){
+			if (getRightCount() != 0) {
 				SmartDashboard.getString("Error with RIGHT SHOOTER");
 			}
 		}
 	}
-	
-	public void KickerSpeed(double KickerSpeed){
+
+	// stops the kicker motor
+	public void stopKicker() {
+		KickingMotor.set(0);
+	}
+
+	// checks to see if either limit switch is true, then moves
+	public void Kick(double KickerSpeed) {
 		KickingMotor.set(KickerSpeed);
+		if (topLimitAct = true) {
+			KickingMotor.set(-KickerSpeed);
+			} 
+		else if (bottomLimitAct = true) {
+			KickingMotor.set(0);
+			}
 	}
 
 	// The arms raise and lower the shooter....
