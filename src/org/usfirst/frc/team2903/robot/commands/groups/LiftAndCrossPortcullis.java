@@ -18,7 +18,7 @@ public class LiftAndCrossPortcullis extends CommandGroup {
 		if (shootBoulder)
 		{
 			addSequential(new AimShooter());
-			addParallel(new SpinUpShooter());
+			addParallel(new SpinUpShooter(true));
 			addSequential(new Shoot());
 		}
 	}

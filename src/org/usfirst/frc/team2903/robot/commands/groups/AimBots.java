@@ -24,7 +24,7 @@ public class AimBots extends CommandGroup{
 		addSequential(new HorizontalAim(index));
 		addSequential(new VerticalAim(index));
 		if (Shoot){
-			addSequential(new SpinUpShooter());
+			addSequential(new SpinUpShooter(true));
 			addSequential(new Shoot());
 		}
 		

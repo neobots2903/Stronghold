@@ -8,37 +8,31 @@ package org.usfirst.frc.team2903.robot;
  */
 public class RobotMap {
 
-	// drive
+	// drive motors
 	public static int RightTopMotor = 30;
 	public static int LeftTopMotor = 31;
 	public static int LeftBottomMotor = 33;
 	public static int RightBottomMotor = 32;
 
-	public static int RightShooter = 36;
-	public static int LeftShooter = 37;
-
+	// arm controller motor
 	public static int armMotor = 34;
-	
-	//Limit Switches
+
+	// kicker motor
+	public static int kickerMotor = 35;
+	// kicker Limit Switches
 	public static int botLimitSwitch = 4;//port subjected to change
     public static int topLimitSwitch = 5;//port subjected to change
+	
+	// shooter motors
+	public static int RightShooter = 36;
+	public static int LeftShooter = 37;
+	
 
 	// PWM
 
-	// Pneumatics
-
-	// Gyro
+	// Gyro is on analog 0
 	public static int Gyro = 0;
-
-	// Shooters
-	public static int ShooterMotor1 = 0;
-	public static int ShooterMotor2 = 1;
-
-	// Lift
-	public static int LiftMotor = 2;
 
 	// Winch
 	public static int WinchMotor = 3;
-
-	public static int KickingMotor = 4;
 }

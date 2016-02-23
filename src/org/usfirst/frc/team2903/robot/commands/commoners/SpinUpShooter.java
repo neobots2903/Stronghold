@@ -1,18 +1,29 @@
 package org.usfirst.frc.team2903.robot.commands.commoners;
 
+import org.usfirst.frc.team2903.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class SpinUpShooter extends Command {
 
-	public SpinUpShooter() {
+	boolean HighShooter;
+	
+	public SpinUpShooter(boolean highShoot) {
 		super("SpinUpShooter");
 		
-		//requires("Robot.shootSubsystem");s
+		requires(Robot.shooterSubsystem);
+	
+		HighShooter = highShoot;
 	}
 
 	@Override
 	protected void initialize() {
-		// TODO Auto-generated method stub
+		
+		if (HighShooter)
+			Robot.shooterSubsystem.enableHighGoalMode();
+		else
+			Robot.shooterSubsystem.enableLowGoalMode();
+			
 
 	}
 
@@ -25,6 +36,9 @@ public class SpinUpShooter extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
+		
+		// how do we know we have spun up the shooter?
+		
 		return false;
 	}
 

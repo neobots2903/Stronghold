@@ -22,61 +22,63 @@ public class TurnWithGyro extends Command{
 		Left, Right
 	}
 
-	static TurnDirection turnDirection;
-
-	public TurnWithGyro(double horizontalAngle) {
-		TargetAngle = horizontalAngle;
-
+	public TurnWithGyro(double targetangle) {
+		setTargetAngle(targetangle);
 	}
 
-	public double getTargetAngle() {
+	public  double getTargetAngle() {
 		return TargetAngle;
 	}
 
 	public void setTargetAngle(double targetAngle) {
 		TargetAngle = targetAngle;
+
 		// adjust angle down to one circle
 		TargetAngle = TargetAngle % 360;
-		if (TargetAngle < 180) {
-			turnDirection = TurnDirection.Right;
-		}
-
-		else {
-			TargetAngle -= 360;
-			turnDirection = TurnDirection.Left;
-		}
 	}
 
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.gyroSubsystem.Calibrate();
-		Robot.gyroSubsystem.reset();
-		
+//		Robot.gyroSubsystem.gyro.reset();
 	}
 
 	@Override
 	protected void execute() {
-		
-
 		double gyroAngle = Robot.gyroSubsystem.GyroPosition() % 360;
+		boolean turnLeft = false;
 		
-		if (TargetAngle < 0 && (gyroAngle < TargetAngle - 0.1 || gyroAngle > TargetAngle + 0.1))
+		// TODO Auto-generated method stub
+		if (TargetAngle < 0) {
+			if (gyroAngle > TargetAngle)
+				turnLeft = true;
+			if (gyroAngle < TargetAngle)
+				turnLeft = false;
+		}
+		else{
+			if (gyroAngle > TargetAngle)
+				turnLeft = false;
+			if (gyroAngle < TargetAngle)
+				turnLeft = true;
+			
+		}
+			
+		if (!turnLeft)
 			Robot.driveSubsystem.tankDrive(-0.5, -0.5);
-		else if (TargetAngle >= 0 && (gyroAngle < TargetAngle - 0.1 || gyroAngle > TargetAngle + 0.1))
+		else 
 			Robot.driveSubsystem.tankDrive(0.5, 0.5);
-	
+		
 	}
 
 	@Override
 	protected boolean isFinished() {
+		// TODO Auto-generated method stub
 		double gyroAngle = Robot.gyroSubsystem.GyroPosition() % 360;
 		
-		if (gyroAngle >= TargetAngle - 0.1 && 
-			gyroAngle <= TargetAngle + 0.1) {
+		if (gyroAngle >= (TargetAngle - 0.1) && gyroAngle <= (TargetAngle + 0.1) ) 
 			return true;
-		}	
-		return false;
+		else
+			return false;
 	}
 
 	@Override

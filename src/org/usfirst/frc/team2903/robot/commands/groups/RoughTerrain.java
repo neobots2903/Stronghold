@@ -16,7 +16,7 @@ public class RoughTerrain extends CommandGroup {
 
 		if (shoot) {
 			addSequential(new AimShooter());
-			addParallel(new SpinUpShooter());
+			addParallel(new SpinUpShooter(true));
 			addSequential(new Shoot());
 		}
 	}

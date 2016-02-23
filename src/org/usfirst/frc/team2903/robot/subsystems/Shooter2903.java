@@ -27,47 +27,36 @@ public class Shooter2903 extends Subsystem {
 	static int leftCount;
 	static int rightCount;
 
-	public static int getLeftCount() {
-		if (shooterLeftSpeedEncoder != null)
-			return leftCount = shooterLeftSpeedEncoder.get();
-		else
-			return 0;
-
-	}
-
-	public static int getLeftRawCount() {
-		return leftRawCount;
-	}
-
-	public static int getRightCount() {
-		if (shooterRightSpeedEncoder != null)
-			return rightCount = shooterRightSpeedEncoder.get();
-		else
-			return 0;
-
-	}
-
-	public static int getRightRawCount() {
-		return rightRawCount;
-	}
-
+	// raw encoder counts
 	static int leftRawCount;
 	static int rightRawCount;
+	
+	
+	// shooter and kicker talons
 	static CANTalon rightShooter;
 	static CANTalon leftShooter;
 	static CANTalon KickingMotor;
+
 	// encoder for shooter motors
 	static Encoder shooterLeftSpeedEncoder;
 	static Encoder shooterRightSpeedEncoder;
 
+
+
 	public Shooter2903() {
+		
+		super("Shooter2903");
+		
 		// instantiate the talon motor controllers
 		rightShooter = new CANTalon(RobotMap.RightShooter);
 		leftShooter = new CANTalon(RobotMap.LeftShooter);
-		KickingMotor = new CANTalon(RobotMap.KickingMotor);
+		KickingMotor = new CANTalon(RobotMap.kickerMotor);
+		
+		// enable the motors
 		leftShooter.enable();
 		rightShooter.enable();
 		KickingMotor.enable();
+		
 		// instantiate the encoder
 		shooterLeftSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 		shooterRightSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
@@ -80,6 +69,7 @@ public class Shooter2903 extends Subsystem {
 		rightHighForward = 1.0;
 		rightLowForward = 0.35;
 		rightReverse = -0.25;
+		
 		// get the encoder counts
 		leftCount = shooterLeftSpeedEncoder.get();
 		leftRawCount = shooterLeftSpeedEncoder.getRaw();
@@ -94,6 +84,12 @@ public class Shooter2903 extends Subsystem {
 
 	}
 
+	public void selectGoalMode(boolean highGoal)
+	{
+		shooterLeftSpeedEncoder.reset();
+		shooterRightSpeedEncoder.reset();
+		
+	}
 	public void enableHighGoalMode() {
 		shooterLeftSpeedEncoder.reset();
 		shooterRightSpeedEncoder.reset();
@@ -126,6 +122,7 @@ public class Shooter2903 extends Subsystem {
 	public void enableLowGoalMode() {
 		shooterLeftSpeedEncoder.reset();
 		shooterRightSpeedEncoder.reset();
+		
 		// TODO: add kicker
 		leftShooter.set(leftLowForward * -1.0);
 		rightShooter.set(rightLowForward);
@@ -136,19 +133,30 @@ public class Shooter2903 extends Subsystem {
 		SmartDashboard.putNumber("rightCount", getRightCount());
 		SmartDashboard.putNumber("rightRawCount", getRightRawCount());
 		if (getLeftCount() != getRightCount()) {
-			if (getLeftCount() < getRightCount()) {
-				rightHighForward = rightHighForward + 0.1;
+			double difference = getLeftCount() - getRightCount();
+			if (difference < 0)
+			{
+				rightLowForward -= difference;
+				leftLowForward += difference;
 			}
-			if (getLeftCount() > getRightCount()) {
-				leftHighForward = leftHighForward + 0.1;
+			else
+			{
+				rightLowForward += difference;
+				leftLowForward -= difference;
 			}
+//			if (getLeftCount() < getRightCount()) {
+//				rightLowForward = rightLowForward + 0.1;
+//			}
+//			if (getLeftCount() > getRightCount()) {
+//				leftLowForward = leftLowForward + 0.1;
+//			}
 		}
-		if (rightHighForward > 0.) {
-			rightHighForward = .0;
-		}
-		if (leftHighForward > 0.) {
-			leftHighForward = .0;
-		}
+//		if (rightLowForward > 0.) {
+//			rightLowForward = .0;
+//		}
+//		if (leftLowForward > 0.) {
+//			leftLowForward = .0;
+//		}
 	}
 
 	public void enablePickupMode() {
@@ -211,12 +219,34 @@ public class Shooter2903 extends Subsystem {
 			}
 	}
 
-	// The arms raise and lower the shooter....
-	public void raiseShooter() {
-		// manual lifting or positions?
+	public static int getLeftCount() {
+		if (shooterLeftSpeedEncoder != null)
+			return leftCount = shooterLeftSpeedEncoder.get();
+		else
+			return 0;
+
 	}
 
-	public void lowerShooter() {
-		// manual lifting or positions?
+	public static int getLeftRawCount() {
+		if (shooterLeftSpeedEncoder != null)
+			return leftRawCount = shooterLeftSpeedEncoder.getRaw();
+		else
+			return 0;
 	}
+
+	public static int getRightCount() {
+		if (shooterRightSpeedEncoder != null)
+			return rightCount = shooterRightSpeedEncoder.get();
+		else
+			return 0;
+
+	}
+
+	public static int getRightRawCount() {
+		if (shooterRightSpeedEncoder != null)
+			return rightRawCount = shooterRightSpeedEncoder.getRaw();
+		else
+			return 0;
+	}
+
 }
