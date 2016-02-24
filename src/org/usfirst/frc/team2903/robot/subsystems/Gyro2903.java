@@ -19,7 +19,7 @@ public class Gyro2903 extends Subsystem {
 	
 	public double GyroPosition() {
 
-		gyro.reset();
+		//gyro.reset();
 		gyroAngle = gyro.getAngle();
 		SmartDashboard.putNumber("gyroAngle", gyroAngle);
 		return gyroAngle;

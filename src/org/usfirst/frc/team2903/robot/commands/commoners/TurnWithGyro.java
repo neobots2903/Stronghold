@@ -64,9 +64,9 @@ public class TurnWithGyro extends Command{
 		}
 			
 		if (!turnLeft)
-			Robot.driveSubsystem.tankDrive(-0.5, -0.5);
+			Robot.driveSubsystem.tankDrive(-0.6, -0.6);
 		else 
-			Robot.driveSubsystem.tankDrive(0.5, 0.5);
+			Robot.driveSubsystem.tankDrive(0.6, 0.6);
 		
 	}
 
