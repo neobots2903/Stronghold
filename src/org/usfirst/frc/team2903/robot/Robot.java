@@ -3,6 +3,8 @@ package org.usfirst.frc.team2903.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -10,6 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team2903.robot.commands.Auto;
 import org.usfirst.frc.team2903.robot.commands.groups.DriveInAOneSecondSquare;
 import org.usfirst.frc.team2903.robot.commands.Teleop;
+import org.usfirst.frc.team2903.robot.commands.commoners.Shoot;
 //import org.usfirst.frc.team2903.robot.commands.groups.DriveInAOneSecondSquare;
 import org.usfirst.frc.team2903.robot.subsystems.CameraVision2903;
 import org.usfirst.frc.team2903.robot.subsystems.Arm2903;
@@ -36,8 +39,10 @@ public class Robot extends IterativeRobot {
 	Command teleopCommand;
 	public static CameraVision2903 cameraSubsystem   ;
 
-	public static Joystick joyOp = new Joystick(1);
-	public static Joystick joy1 = new Joystick(0);
+	public static Joystick joyOp = new Joystick(0);
+	Button triggerKick = new JoystickButton(joyOp, 1);
+	
+	public static Joystick joy1 = new Joystick(1);
 
 
 	/**
@@ -59,6 +64,7 @@ public class Robot extends IterativeRobot {
 		// CameraServer server = CameraServer.getInstance();
 		// server.setQuality(50);
 		// server.startAutomaticCapture("cam0");
+		triggerKick.whenPressed(new Shoot());
 	}
 
 	public void disabledPeriodic() {

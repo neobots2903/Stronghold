@@ -29,7 +29,7 @@ public class Teleop extends Command {
 											// is forward
 		//double turn = Robot.joy1.getZ()/1.5; // logitech X, positive
 		// means turn right
-		double turn = Robot.joy1.getZ(); // logitech X, positive
+		double turn = Robot.joy1.getX()/1.5; // logitech X, positive
 											// means turn right
 
 
@@ -55,30 +55,34 @@ public class Teleop extends Command {
 			
 		
 
-//		if (Robot.joy1.getRawButton(3)){
-//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
-//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
-//			
-//			leftShoot.set(1.0);
-//			rightShoot.set(-1.0);
-//		}
-//		
-//	
-//		else if (Robot.joy1.getRawButton(4)){
-//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
-//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
-//			
-//			leftShoot.set(-0.65);
-//			rightShoot.set(0.65);
-//		}
-//		
-//		else{
-//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
-//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
-//			
-//			leftShoot.set(0);
-//			rightShoot.set(0);
-//		}
+		if (Robot.joy1.getRawButton(3)){
+			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+			
+			leftShoot.set(1.0);
+			rightShoot.set(-1.0);
+		}
+		
+	
+		else if (Robot.joy1.getRawButton(4)){
+			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+			
+			leftShoot.set(-0.65);
+			rightShoot.set(0.65);
+		}
+		
+		else{
+			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+			
+			leftShoot.set(0);
+			rightShoot.set(0);
+		}
+		
+		if (Robot.joyOp.getRawButton(1)){
+			
+		}
 
 		
 			
