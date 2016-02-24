@@ -29,7 +29,7 @@ public class Teleop extends Command {
 											// is forward
 		//double turn = Robot.joy1.getZ()/1.5; // logitech X, positive
 		// means turn right
-		double turn = Robot.joy1.getX()/1.5; // logitech X, positive
+		double turn = Robot.joy1.getX(); // logitech X, positive
 											// means turn right
 
 
@@ -53,9 +53,17 @@ public class Teleop extends Command {
 //		if (Robot.joyOp.getRawButton(3))
 //			// high goal
 			
+		if (Robot.joyOp.getRawButton(5)){
+			Robot.shooterSubsystem.Kick(0.1);
+		}
+		else if (Robot.joyOp.getRawButton(6)){
+			Robot.shooterSubsystem.Kick(-0.1);
+		}
+		else {
+			Robot.shooterSubsystem.stopKicker();
+		}
 		
-
-		if (Robot.joy1.getRawButton(3)){
+		if (Robot.joyOp.getRawButton(3)){
 			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
 			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
 			
@@ -64,7 +72,7 @@ public class Teleop extends Command {
 		}
 		
 	
-		else if (Robot.joy1.getRawButton(4)){
+		else if (Robot.joyOp.getRawButton(4)){
 			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
 			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
 			
@@ -80,13 +88,13 @@ public class Teleop extends Command {
 			rightShoot.set(0);
 		}
 		
-		if (Robot.joyOp.getRawButton(1)){
-			
-		}
+	
+		
+	}
 
 		
 			
-			}
+
 
 
 	protected boolean isFinished() {

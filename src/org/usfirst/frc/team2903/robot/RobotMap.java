@@ -16,9 +16,9 @@ public class RobotMap {
 
 	// arm controller motor
 	public static int armMotor = 34;
-
+	//public static int climbingMotor = 35
 	// kicker motor
-	public static int kickerMotor = 35;
+	public static int kickerMotor = 38;
 	// kicker Limit Switches
 	public static int botLimitSwitch = 4;//port subjected to change
     public static int topLimitSwitch = 5;//port subjected to change
