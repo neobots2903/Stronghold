@@ -18,9 +18,12 @@ public class TurnWithGyro extends Command{
 
 	double TargetAngle = 0;
 
-	enum TurnDirection {
-		Left, Right
-	}
+	double HighLimit;
+	double LowLimit;
+	double ErrorLimit = 0.1;
+	double MotorSpeed = 0.6;
+	double ReajustMotorSpeed = 0
+	boolean PreviousTurnLeft = false;
 
 	public TurnWithGyro(double targetangle) {
 		setTargetAngle(targetangle);
@@ -35,6 +38,10 @@ public class TurnWithGyro extends Command{
 
 		// adjust angle down to one circle
 		TargetAngle = TargetAngle % 360;
+
+		// set the limits for adjustment
+		HighLimit = TargetAngle + ErrorLimit;
+		LowLimit = TargetAngle - ErrorLimit;
 	}
 
 	@Override
@@ -49,7 +56,7 @@ public class TurnWithGyro extends Command{
 		boolean turnLeft = false;
 		
 		// TODO Auto-generated method stub
-		if (TargetAngle < 0) {
+		if (TargetAngle <= 0) {
 			if (gyroAngle > TargetAngle)
 				turnLeft = true;
 			if (gyroAngle < TargetAngle)
@@ -60,13 +67,20 @@ public class TurnWithGyro extends Command{
 				turnLeft = false;
 			if (gyroAngle < TargetAngle)
 				turnLeft = true;
-			
 		}
-			
+		
+		// we are readjusting the angle, lower the readjustment speed
+		if (turnLeft != PreviousTurnLeft) {
+			MotorSpeed = ReadjustMotorSpeed;
+			PreviousTurnLeft = turnLeft;
+		}
+		
 		if (!turnLeft)
-			Robot.driveSubsystem.tankDrive(-0.6, -0.6);
+			// turn right
+			Robot.driveSubsystem.tankDrive(MotorSpeed * -1.0, MotorSpeed * -1.0);
 		else 
-			Robot.driveSubsystem.tankDrive(0.6, 0.6);
+			// turn left
+			Robot.driveSubsystem.tankDrive(MotorSpeed, MotorSpeed);
 		
 	}
 
@@ -75,7 +89,7 @@ public class TurnWithGyro extends Command{
 		// TODO Auto-generated method stub
 		double gyroAngle = Robot.gyroSubsystem.GyroPosition() % 360;
 		
-		if (gyroAngle >= (TargetAngle - 0.1) && gyroAngle <= (TargetAngle + 0.1) ) 
+		if (gyroAngle >= LowLimit && gyroAngle <= HighLimit ) 
 			return true;
 		else
 			return false;
