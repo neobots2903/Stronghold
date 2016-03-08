@@ -2,39 +2,30 @@ package org.usfirst.frc.team2903.robot.commands.commoners;
 
 import org.usfirst.frc.team2903.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveForward extends Command {
+public class StopShoot extends Command {
 
-	long DistanceToDrive;
-	
-	public DriveForward(int distance)
-	{
-		super("DriveForward");
-		
-		requires(Robot.driveSubsystem);
-		
-		DistanceToDrive = Math.round((960 * distance) / 75.36);		
-	}
-	
-	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.driveSubsystem.setPosition(DistanceToDrive);
 
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
+		Robot.shooterSubsystem.Kick(1.0);
+		Timer.delay(0.128);
+		Robot.shooterSubsystem.Kick(0);
 
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

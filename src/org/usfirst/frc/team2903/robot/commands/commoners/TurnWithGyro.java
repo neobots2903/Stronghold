@@ -22,7 +22,7 @@ public class TurnWithGyro extends Command{
 	double LowLimit;
 	double ErrorLimit = 0.1;
 	double MotorSpeed = 0.6;
-	double ReajustMotorSpeed = 0
+	double ReadjustMotorSpeed = 0;
 	boolean PreviousTurnLeft = false;
 
 	public TurnWithGyro(double targetangle) {
