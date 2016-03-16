@@ -29,7 +29,7 @@ public class Shoot extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		Timer.delay(0.15);
+		Timer.delay(0.128);
 		Robot.shooterSubsystem.Kick(0);
 		return true;
 	}

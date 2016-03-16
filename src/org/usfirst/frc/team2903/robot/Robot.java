@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2903.robot.commands.Auto;
+import org.usfirst.frc.team2903.robot.commands.groups.CrossMoat;
 import org.usfirst.frc.team2903.robot.commands.groups.DriveInAOneSecondSquare;
 import org.usfirst.frc.team2903.robot.commands.Teleop;
 import org.usfirst.frc.team2903.robot.commands.commoners.Shoot;
@@ -59,7 +60,7 @@ public class Robot extends IterativeRobot {
 
 		shooterSubsystem = new Shooter2903();
 		armSubsystem = new Arm2903();
-		autonomousCommand = new DriveInAOneSecondSquare();
+		autonomousCommand = new CrossMoat(false);
 
 		teleopCommand = new Teleop();
 		CameraServer server = CameraServer.getInstance();

@@ -50,13 +50,14 @@ public class Arm2903 extends Subsystem {
 
 		pot = new AnalogPotentiometer(1, 100, 0);
 
+		
 		IsReset = false;
 		IsCalibrated = false;
 		IsTargetAngleSet = false;
 		ArmResetAngle = 0;
 		AngleError = 2;
-		MaxArmAngle = 100;
-		ArmMotorSpeed = 0.75;
+		MaxArmAngle = 1000;
+		ArmMotorSpeed = 0.6;
 	}
 
 	// resets the arm to the calibrated angle
@@ -150,11 +151,13 @@ public class Arm2903 extends Subsystem {
 		//if(reachedTopLimit = true){
 		//	stopArm();
 		//}
-		if (pot.get() < MaxArmAngle) {
-			ArmMotor.set(ArmMotorSpeed*-1);
+	//	if (pot.get() < MaxArmAngle) 
+		{
+			ArmMotor.enableBrakeMode(false);
+			ArmMotor.set(ArmMotorSpeed);
 		}
-		else
-			stopArm();
+//		else
+			//stopArm();
 	}
 
 	// this lowers the arm, but limits the movement to no further than the reset
@@ -163,18 +166,21 @@ public class Arm2903 extends Subsystem {
 		//if(reachedBottomLimit = true){
 		//	stopArm();
 		//}
-		if (pot.get() > ArmResetAngle) {
-			ArmMotor.set(ArmMotorSpeed);
+		//if (pot.get() > ArmResetAngle) 
+		{
+			ArmMotor.enableBrakeMode(false);
+			ArmMotor.set(ArmMotorSpeed*-1);
 		}
-		else{
-			stopArm();
-		}
+		//else{
+			//stopArm();
+		//}
 	}
 
 	 //this stops the arm from moving.
 	public void stopArm() {
 		// TODO Auto-generated method stub
 		ArmMotor.set(0);
+		ArmMotor.enableBrakeMode(true);
 
 	}
 

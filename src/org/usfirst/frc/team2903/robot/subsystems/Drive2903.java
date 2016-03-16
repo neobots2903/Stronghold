@@ -77,13 +77,13 @@ public class Drive2903 extends Subsystem {
 		rightFrontMotor = new CANTalon(RobotMap.RightTopMotor);
 		rightRearMotor = new CANTalon(RobotMap.RightBottomMotor);
 
-		rightFrontMotor.changeControlMode(TalonControlMode.Follower);
-		rightRearMotor.changeControlMode(TalonControlMode.Follower);
-		leftRearMotor.changeControlMode(TalonControlMode.Follower);
-		
-		rightFrontMotor.set(RobotMap.LeftTopMotor);
-		rightRearMotor.set(RobotMap.LeftTopMotor);
-		leftRearMotor.set(RobotMap.LeftTopMotor);
+//		leftFrontMotor.changeControlMode(TalonControlMode.Follower);
+//		rightRearMotor.changeControlMode(TalonControlMode.Follower);
+//		leftRearMotor.changeControlMode(TalonControlMode.Follower);
+//		
+//		leftFrontMotor.set(RobotMap.RightTopMotor);
+//		rightRearMotor.set(RobotMap.RightTopMotor);
+//		leftRearMotor.set(RobotMap.RightTopMotor);
 		
 		// enable the motors
 		leftFrontMotor.enable();

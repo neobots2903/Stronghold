@@ -20,8 +20,8 @@ public class RobotMap {
 	// kicker motor
 	public static int kickerMotor = 38;
 	// kicker Limit Switches
-	public static int botLimitSwitch = 4;//port subjected to change
-    public static int topLimitSwitch = 5;//port subjected to change
+//	public static int botLimitSwitch = 4;//port subjected to change
+//    public static int topLimitSwitch = 5;//port subjected to change
 	
 	// shooter motors
 	public static int RightShooter = 36;

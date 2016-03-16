@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Shooter2903 extends Subsystem {
 
 	// LimitSwitches
-	public DigitalInput bottomLimit = new DigitalInput(RobotMap.botLimitSwitch);
-	public DigitalInput upperLimit = new DigitalInput(RobotMap.topLimitSwitch);
+//	public DigitalInput bottomLimit = new DigitalInput(RobotMap.botLimitSwitch);
+//	public DigitalInput upperLimit = new DigitalInput(RobotMap.topLimitSwitch);
 
 	// LimitSwitches' Booleans
-	boolean bottomLimitAct = bottomLimit.get();
-	boolean topLimitAct = upperLimit.get();
+//	boolean bottomLimitAct = bottomLimit.get();
+//	boolean topLimitAct = upperLimit.get();
 
 	static double leftHighForward;
 	static double leftLowForward;
@@ -59,9 +59,9 @@ public class Shooter2903 extends Subsystem {
 		rightShooter.enable();
 		KickingMotor.enable();
 
-		KickingMotor.enableLimitSwitch(true, true);
-		KickingMotor.ConfigFwdLimitSwitchNormallyOpen(false);
-		KickingMotor.ConfigRevLimitSwitchNormallyOpen(false);
+//		KickingMotor.enableLimitSwitch(true, true);
+//		KickingMotor.ConfigFwdLimitSwitchNormallyOpen(false);
+//		KickingMotor.ConfigRevLimitSwitchNormallyOpen(false);
 
 		// instantiate the encoder
 //		shooterLeftSpeedEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);

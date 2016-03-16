@@ -39,11 +39,12 @@ public class Teleop extends Command {
 		 * outward on release they stop when b is pressed and held, both motors
 		 * turn in opposite directions inward on release they stop
 		 */
+		int pov=Robot.joyOp.getPOV();
 		
 		if (Robot.joyOp.getPOV() == 0)
 			//raise arm 
 			Robot.armSubsystem.raiseArm();
-		else if (Robot.joyOp.getPOV() == 4)
+		else if (Robot.joyOp.getPOV() == 180)
 			//lower arm
 			Robot.armSubsystem.lowerArm();
 		else 

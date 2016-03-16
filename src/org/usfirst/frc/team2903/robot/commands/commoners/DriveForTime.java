@@ -26,6 +26,7 @@ public  class DriveForTime extends Command{
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
+		//DriveStraightWithGyro.GyroPID(Robot.driveSubsystem, Robot.gyroSubsystem);
 		Robot.driveSubsystem.tankDrive(0.6, -0.6);
 		TimeForDistance = timer.get();
 	}
