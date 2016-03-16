@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.PIDController;
 //import edu.wpi.first.wpilibj.
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
@@ -27,6 +28,7 @@ public class Arm2903 extends Subsystem {
 	
 	
 	Potentiometer pot;
+	PIDController autoShooter;// = new PIDController(0,1, 0.001, 0.0, pot, lifter); //PID controller
 
 	double AngleError;
 	double ArmResetAngle; // the starting position of the potentiometer when
@@ -48,9 +50,10 @@ public class Arm2903 extends Subsystem {
 
 		ArmMotor = new CANTalon(RobotMap.armMotor);
 
-		pot = new AnalogPotentiometer(1, 100, 0);
+		pot = new AnalogPotentiometer(1, 360, 0);
 
-		
+		autoShooter = new PIDController(0.1, 0.001, 0.0, pot, ArmMotor); //PID controller
+
 		IsReset = false;
 		IsCalibrated = false;
 		IsTargetAngleSet = false;
