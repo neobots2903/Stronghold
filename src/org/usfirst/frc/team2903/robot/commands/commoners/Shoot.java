@@ -15,8 +15,8 @@ public class Shoot extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		//requires(Robot.shooterSubsystem);
-	
+		// requires(Robot.shooterSubsystem);
+
 	}
 
 	@Override
@@ -30,6 +30,9 @@ public class Shoot extends Command {
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 		Timer.delay(0.128);
+		Robot.shooterSubsystem.Kick(0);
+		Robot.shooterSubsystem.Kick(1.0);
+		Timer.delay(0.087);
 		Robot.shooterSubsystem.Kick(0);
 		return true;
 	}

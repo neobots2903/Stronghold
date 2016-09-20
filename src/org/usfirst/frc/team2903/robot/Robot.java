@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
 		server.setQuality(50);
 		server.startAutomaticCapture("cam0");
 		triggerKick.whenPressed(new Shoot());
-		triggerKick.whenReleased(new StopShoot());
+	//	triggerKick.whenReleased(new StopShoot());
 
 	}
 

@@ -28,7 +28,7 @@ public class Arm2903 extends Subsystem {
 	
 	
 	Potentiometer pot;
-	PIDController autoShooter;// = new PIDController(0,1, 0.001, 0.0, pot, lifter); //PID controller
+	public PIDController autoShooter;// = new PIDController(0,1, 0.001, 0.0, pot, lifter); //PID controller
 
 	double AngleError;
 	double ArmResetAngle; // the starting position of the potentiometer when
@@ -52,7 +52,7 @@ public class Arm2903 extends Subsystem {
 
 		pot = new AnalogPotentiometer(1, 360, 0);
 
-		autoShooter = new PIDController(0.1, 0.001, 0.0, pot, ArmMotor); //PID controller
+		autoShooter = new PIDController(0.5, 0.0, 0.0, pot, ArmMotor); //PID controller
 
 		IsReset = false;
 		IsCalibrated = false;
@@ -158,6 +158,7 @@ public class Arm2903 extends Subsystem {
 		{
 			ArmMotor.enableBrakeMode(false);
 			ArmMotor.set(ArmMotorSpeed);
+			IsReset=false;
 		}
 //		else
 			//stopArm();
@@ -173,6 +174,7 @@ public class Arm2903 extends Subsystem {
 		{
 			ArmMotor.enableBrakeMode(false);
 			ArmMotor.set(ArmMotorSpeed*-1);
+			IsReset=false;
 		}
 		//else{
 			//stopArm();
@@ -184,6 +186,7 @@ public class Arm2903 extends Subsystem {
 		// TODO Auto-generated method stub
 		ArmMotor.set(0);
 		ArmMotor.enableBrakeMode(true);
+		IsReset=false;
 
 	}
 

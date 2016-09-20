@@ -20,6 +20,7 @@ public class Teleop extends Command {
 
 	protected void initialize() {
 		// Robot.elevatorSubsystem.encoder.reset();
+		Robot.armSubsystem.autoShooter.disable();
 
 	}
 
@@ -31,6 +32,7 @@ public class Teleop extends Command {
 		// means turn right
 		double turn = Robot.joy1.getX(); // logitech X, positive
 											// means turn right
+		
 
 
 		Robot.driveSubsystem.arcadeDrive(turn, forward);
@@ -49,7 +51,11 @@ public class Teleop extends Command {
 			Robot.armSubsystem.lowerArm();
 		else 
 			//stop arm
-			Robot.armSubsystem.stopArm();
+			if (!Robot.armSubsystem.isReset())
+				Robot.armSubsystem.resetArm();
+			else
+				//stop arm
+				Robot.armSubsystem.stopArm();
 		
 //		if (Robot.joyOp.getRawButton(3))
 //			// high goal
