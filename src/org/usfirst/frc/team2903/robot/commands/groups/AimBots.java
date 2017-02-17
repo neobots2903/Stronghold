@@ -29,7 +29,6 @@ public class AimBots extends CommandGroup{
 		}
 		
 		/**int index = 0;
-
 		index = Robot.cameraSubsystem.GetBiggestAreaIndex();
 		
 		double offsetX = Robot.cameraSubsystem.GetOffsetX(index); 

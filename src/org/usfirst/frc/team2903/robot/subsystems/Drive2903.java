@@ -24,7 +24,7 @@ public class Drive2903 extends Subsystem {
 	public int rightGetRawcount() {
 		if (driveSpeedEncoder != null)
 			return RightRawCount = driveSpeedEncoder.getRaw();
-		else
+		elseW
 			return 0;
 	}
 	int LeftCount;
