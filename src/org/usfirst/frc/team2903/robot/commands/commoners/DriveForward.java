@@ -6,21 +6,22 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveForward extends Command {
 
-	double DistanceToDrive;
+	long DistanceToDrive;
 	
-	public DriveForward(double distance)
+	public DriveForward(int distance)
 	{
 		super("DriveForward");
 		
 		requires(Robot.driveSubsystem);
 		
-		DistanceToDrive = distance;
+		DistanceToDrive = Math.round((960 * distance) / 75.36);		
 	}
 	
 	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
+		Robot.driveSubsystem.setPosition(DistanceToDrive);
 
 	}
 

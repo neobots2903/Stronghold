@@ -1,7 +1,9 @@
 package org.usfirst.frc.team2903.robot.commands.groups;
 
 import org.usfirst.frc.team2903.robot.commands.commoners.AimShooter;
-import org.usfirst.frc.team2903.robot.commands.commoners.DriveForward;
+import org.usfirst.frc.team2903.robot.commands.commoners.DriveForTime;
+import org.usfirst.frc.team2903.robot.commands.commoners.LowerArmsDefault;
+import org.usfirst.frc.team2903.robot.commands.commoners.MoveArmForATime;
 import org.usfirst.frc.team2903.robot.commands.commoners.Shoot;
 import org.usfirst.frc.team2903.robot.commands.commoners.SpinUpShooter;
 
@@ -12,10 +14,12 @@ public class CrossMoat extends CommandGroup {
 
 	public CrossMoat(boolean shoot) {
 		super("CrossMoat");
-		addSequential(new DriveForward(1));
-
+		
+			//addSequential(new LowerArmsDefault());
+			addSequential(new MoveArmForATime(0.85));
+			addParallel(new DriveForTime(4));
+		
 		if (shoot) {
-			addSequential(new AimShooter());
 			addParallel(new SpinUpShooter(true));
 			addSequential(new Shoot());
 		}

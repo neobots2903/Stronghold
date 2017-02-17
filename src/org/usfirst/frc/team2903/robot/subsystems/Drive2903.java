@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2903.robot.subsystems;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 
 import org.usfirst.frc.team2903.robot.Robot;
@@ -75,6 +76,14 @@ public class Drive2903 extends Subsystem {
 		leftRearMotor = new CANTalon(RobotMap.LeftBottomMotor);
 		rightFrontMotor = new CANTalon(RobotMap.RightTopMotor);
 		rightRearMotor = new CANTalon(RobotMap.RightBottomMotor);
+
+//		leftFrontMotor.changeControlMode(TalonControlMode.Follower);
+//		rightRearMotor.changeControlMode(TalonControlMode.Follower);
+//		leftRearMotor.changeControlMode(TalonControlMode.Follower);
+//		
+//		leftFrontMotor.set(RobotMap.RightTopMotor);
+//		rightRearMotor.set(RobotMap.RightTopMotor);
+//		leftRearMotor.set(RobotMap.RightTopMotor);
 		
 		// enable the motors
 		leftFrontMotor.enable();
@@ -122,6 +131,12 @@ public class Drive2903 extends Subsystem {
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void setPosition(long distanceToDrive) {
+		// TODO Auto-generated method stub
+		leftFrontMotor.set(distanceToDrive);
+		
 	}
 
 }

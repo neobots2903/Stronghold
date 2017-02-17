@@ -20,6 +20,7 @@ public class Teleop extends Command {
 
 	protected void initialize() {
 		// Robot.elevatorSubsystem.encoder.reset();
+		Robot.armSubsystem.autoShooter.disable();
 
 	}
 
@@ -29,8 +30,9 @@ public class Teleop extends Command {
 											// is forward
 		//double turn = Robot.joy1.getZ()/1.5; // logitech X, positive
 		// means turn right
-		double turn = Robot.joy1.getZ(); // logitech X, positive
+		double turn = Robot.joy1.getX(); // logitech X, positive
 											// means turn right
+		
 
 
 		Robot.driveSubsystem.arcadeDrive(turn, forward);
@@ -39,50 +41,67 @@ public class Teleop extends Command {
 		 * outward on release they stop when b is pressed and held, both motors
 		 * turn in opposite directions inward on release they stop
 		 */
+		int pov=Robot.joyOp.getPOV();
 		
 		if (Robot.joyOp.getPOV() == 0)
 			//raise arm 
 			Robot.armSubsystem.raiseArm();
-		else if (Robot.joyOp.getPOV() == 4)
+		else if (Robot.joyOp.getPOV() == 180)
 			//lower arm
 			Robot.armSubsystem.lowerArm();
 		else 
 			//stop arm
-			Robot.armSubsystem.stopArm();
+			if (!Robot.armSubsystem.isReset())
+				Robot.armSubsystem.resetArm();
+			else
+				//stop arm
+				Robot.armSubsystem.stopArm();
 		
 //		if (Robot.joyOp.getRawButton(3))
 //			// high goal
 			
+		if (Robot.joyOp.getRawButton(5)){
+			Robot.shooterSubsystem.Kick(0.1);
+		}
+		else if (Robot.joyOp.getRawButton(6)){
+			Robot.shooterSubsystem.Kick(-0.1);
+		}
+		else {
+			Robot.shooterSubsystem.stopKicker();
+		}
 		
-
-//		if (Robot.joy1.getRawButton(3)){
-//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
-//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
-//			
-//			leftShoot.set(1.0);
-//			rightShoot.set(-1.0);
-//		}
-//		
-//	
-//		else if (Robot.joy1.getRawButton(4)){
-//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
-//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
-//			
-//			leftShoot.set(-0.65);
-//			rightShoot.set(0.65);
-//		}
-//		
-//		else{
-//			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
-//			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
-//			
-//			leftShoot.set(0);
-//			rightShoot.set(0);
-//		}
+		if (Robot.joyOp.getRawButton(3)){
+			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+			
+			leftShoot.set(1.0);
+			rightShoot.set(-1.0);
+		}
+		
+	
+		else if (Robot.joyOp.getRawButton(4)){
+			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+			
+			leftShoot.set(-0.65);
+			rightShoot.set(0.65);
+		}
+		
+		else{
+			CANTalon leftShoot = new CANTalon(RobotMap.LeftShooter);
+			CANTalon rightShoot = new CANTalon(RobotMap.RightShooter);
+			
+			leftShoot.set(0);
+			rightShoot.set(0);
+		}
+		
+	
+		
+	}
 
 		
 			
-			}
+
 
 
 	protected boolean isFinished() {

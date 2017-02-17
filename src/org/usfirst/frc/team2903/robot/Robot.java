@@ -1,15 +1,21 @@
 
 package org.usfirst.frc.team2903.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2903.robot.commands.Auto;
+import org.usfirst.frc.team2903.robot.commands.groups.CrossMoat;
 import org.usfirst.frc.team2903.robot.commands.groups.DriveInAOneSecondSquare;
 import org.usfirst.frc.team2903.robot.commands.Teleop;
+import org.usfirst.frc.team2903.robot.commands.commoners.Shoot;
+import org.usfirst.frc.team2903.robot.commands.commoners.StopShoot;
 //import org.usfirst.frc.team2903.robot.commands.groups.DriveInAOneSecondSquare;
 import org.usfirst.frc.team2903.robot.subsystems.CameraVision2903;
 import org.usfirst.frc.team2903.robot.subsystems.Arm2903;
@@ -31,14 +37,15 @@ public class Robot extends IterativeRobot {
 	public static Shooter2903 shooterSubsystem;
 	public static Gyro2903 gyroSubsystem;
 	public static Arm2903 armSubsystem;
-	
+
 	Command autonomousCommand;
 	Command teleopCommand;
-	public static CameraVision2903 cameraSubsystem   ;
+	public static CameraVision2903 cameraSubsystem;
 
-	public static Joystick joyOp = new Joystick(1);
-	public static Joystick joy1 = new Joystick(0);
+	public static Joystick joyOp = new Joystick(0);
+	Button triggerKick = new JoystickButton(joyOp, 1);
 
+	public static Joystick joy1 = new Joystick(1);
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -49,16 +56,19 @@ public class Robot extends IterativeRobot {
 
 		driveSubsystem = new Drive2903();
 		gyroSubsystem = new Gyro2903();
-		//cameraSubsystem = new CameraVision2903();
-		
-		//shooterSubsystem = new Shooter2903();
+		cameraSubsystem = new CameraVision2903();
+
+		shooterSubsystem = new Shooter2903();
 		armSubsystem = new Arm2903();
-		autonomousCommand = new DriveInAOneSecondSquare();
+		autonomousCommand = new CrossMoat(false);
 
 		teleopCommand = new Teleop();
-		// CameraServer server = CameraServer.getInstance();
-		// server.setQuality(50);
-		// server.startAutomaticCapture("cam0");
+		CameraServer server = CameraServer.getInstance();
+		server.setQuality(50);
+		server.startAutomaticCapture("cam0");
+		triggerKick.whenPressed(new Shoot());
+	//	triggerKick.whenReleased(new StopShoot());
+
 	}
 
 	public void disabledPeriodic() {
